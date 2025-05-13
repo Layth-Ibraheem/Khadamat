@@ -1,0 +1,88 @@
+// Modern color palette
+$primary: #6c5ce7;
+$secondary: #a29bfe;
+$accent: #fd79a8;
+$dark: #2d3436;
+$light: #f5f6fa;
+$success: #00b894;
+$error: #d63031;
+$warning: #fdcb6e;
+$info: #0984e3;
+
+// Text colors
+$text-primary: rgba($dark, 0.87);
+$text-secondary: rgba($dark, 0.6);
+$text-disabled: rgba($dark, 0.38);
+
+// Background colors
+$background: #ffffff;
+$background-alt: #f8f9fa;
+
+// Shadows and transitions
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+// Border colors
+$border-light: rgba($dark, 0.12);
+$border-medium: rgba($dark, 0.24);
+$border-dark: rgba($dark, 0.48);
+
+// Additional semantic colors
+$disabled-bg: rgba($dark, 0.04);
+$disabled-text: rgba($dark, 0.38);
+
+// Opacity variants
+$primary-light: rgba($primary, 0.08);
+$success-light: rgba($success, 0.08);
+$error-light: rgba($error, 0.08);
+$warning-light: rgba($warning, 0.08);
+$info-light: rgba($info, 0.08);
+
+.dialog-card {
+  width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+
+  .dialog-header {
+    padding: 24px;
+    background: linear-gradient(135deg, $error 0%, lighten($error, 15%) 100%);
+    color: white;
+
+    .dialog-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .dialog-subtitle {
+      color: rgba(white, 0.9);
+      font-size: 14px;
+    }
+  }
+
+  .dialog-content {
+    padding: 24px;
+
+    .w-full {
+      width: 100%;
+    }
+  }
+
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px 24px;
+    gap: 12px;
+
+    .cancel-btn {
+      color: $text-secondary;
+    }
+
+    .reject-btn {
+      min-width: 120px;
+    }
+  }
+}

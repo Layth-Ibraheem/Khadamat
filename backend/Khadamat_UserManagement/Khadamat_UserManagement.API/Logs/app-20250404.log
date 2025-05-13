@@ -1,0 +1,464 @@
+2025-04-04 00:25:36.254 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processing request for user with id: 0
+
+2025-04-04 00:27:04.298 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processing request for user with id: 0
+
+2025-04-04 00:27:32.170 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Successfully processed non-critical event UserLoggedInDomainEvent
+
+2025-04-04 03:17:29.964 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processing request for user with id: 5
+
+2025-04-04 03:18:11.185 +03:00 [WRN] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processing request for user with id: 5
+
+2025-04-04 03:58:46.229 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.ModelBinderFactory Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+
+2025-04-04 03:59:06.761 +03:00 [DBG] Microsoft.Extensions.Hosting.Internal.Host Hosting starting
+
+2025-04-04 03:59:07.866 +03:00 [INF] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager User profile is available. Using 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+
+2025-04-04 03:59:09.501 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-1286be47-570a-4a8e-bc36-109f45a5ebe0.xml'.
+
+2025-04-04 03:59:10.429 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-361d6c70-2415-4cb7-9553-5765f8d5567d.xml'.
+
+2025-04-04 03:59:11.219 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-3c0c0126-adee-4115-89bf-dd1d4a6917e2.xml'.
+
+2025-04-04 03:59:11.914 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-65fda612-5789-480e-a4e9-a2fb914ada52.xml'.
+
+2025-04-04 03:59:12.547 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-7220dd30-ca6f-4b29-bec2-e2210e5edcaf.xml'.
+
+2025-04-04 03:59:13.178 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository Reading data from file 'C:\Users\ASUS\AppData\Local\ASP.NET\DataProtection-Keys\key-c2d082ff-3a5a-4355-bcce-c186679795f9.xml'.
+
+2025-04-04 03:59:13.797 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {1286be47-570a-4a8e-bc36-109f45a5ebe0}.
+
+2025-04-04 03:59:14.478 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {361d6c70-2415-4cb7-9553-5765f8d5567d}.
+
+2025-04-04 03:59:15.137 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {3c0c0126-adee-4115-89bf-dd1d4a6917e2}.
+
+2025-04-04 03:59:15.785 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {65fda612-5789-480e-a4e9-a2fb914ada52}.
+
+2025-04-04 03:59:16.346 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {7220dd30-ca6f-4b29-bec2-e2210e5edcaf}.
+
+2025-04-04 03:59:16.977 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager Found key {c2d082ff-3a5a-4355-bcce-c186679795f9}.
+
+2025-04-04 03:59:17.575 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver Considering key {3c0c0126-adee-4115-89bf-dd1d4a6917e2} with expiration date 2025-05-10 16:38:38Z as default key.
+
+2025-04-04 03:59:18.215 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.TypeForwardingActivator Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+
+2025-04-04 03:59:18.807 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor Decrypting secret element using Windows DPAPI.
+
+2025-04-04 03:59:19.477 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.TypeForwardingActivator Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+
+2025-04-04 03:59:20.071 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+
+2025-04-04 03:59:20.651 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngCbcAuthenticatedEncryptorFactory Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+
+2025-04-04 03:59:21.221 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.KeyManagement.KeyRingProvider Using key {3c0c0126-adee-4115-89bf-dd1d4a6917e2} as the default key.
+
+2025-04-04 03:59:21.829 +03:00 [DBG] Microsoft.AspNetCore.DataProtection.Internal.DataProtectionHostedService Key ring with default key {3c0c0126-adee-4115-89bf-dd1d4a6917e2} was loaded during application startup.
+
+2025-04-04 03:59:22.598 +03:00 [INF] Microsoft.Hosting.Lifetime Now listening on: https://localhost:7296
+
+2025-04-04 03:59:42.339 +03:00 [INF] Microsoft.Hosting.Lifetime Now listening on: http://localhost:5254
+
+2025-04-04 03:59:43.283 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEC" received FIN.
+
+2025-04-04 03:59:43.949 +03:00 [DBG] Microsoft.AspNetCore.Hosting.Diagnostics Loaded hosting startup assembly Khadamat_UserManagement.API
+
+2025-04-04 03:59:45.162 +03:00 [DBG] Microsoft.AspNetCore.Hosting.Diagnostics Loaded hosting startup assembly Microsoft.WebTools.ApiEndpointDiscovery
+
+2025-04-04 03:59:45.890 +03:00 [DBG] Microsoft.AspNetCore.Hosting.Diagnostics Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+
+2025-04-04 03:59:45.890 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEC" accepted.
+
+2025-04-04 03:59:47.049 +03:00 [DBG] Microsoft.AspNetCore.Hosting.Diagnostics Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+
+2025-04-04 03:59:47.457 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEC" started.
+
+2025-04-04 03:59:47.959 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCED" received FIN.
+
+2025-04-04 03:59:48.340 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCED" accepted.
+
+2025-04-04 03:59:48.733 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCED" started.
+
+2025-04-04 03:59:48.735 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEE" received FIN.
+
+2025-04-04 03:59:49.473 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEE" accepted.
+
+2025-04-04 03:59:49.839 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEE" started.
+
+2025-04-04 03:59:49.840 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEF" received FIN.
+
+2025-04-04 03:59:49.840 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+
+2025-04-04 03:59:50.621 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEF" accepted.
+
+2025-04-04 03:59:50.636 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+
+2025-04-04 03:59:50.636 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+
+2025-04-04 03:59:51.327 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEF" started.
+
+2025-04-04 03:59:51.948 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCED" stopped.
+
+2025-04-04 03:59:51.946 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEC" stopped.
+
+2025-04-04 03:59:52.701 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEE" stopped.
+
+2025-04-04 03:59:51.332 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEG" accepted.
+
+2025-04-04 03:59:53.503 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+
+2025-04-04 03:59:53.911 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCED" sending FIN because: "The Socket transport's send loop completed gracefully."
+
+2025-04-04 03:59:53.911 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEC" sending FIN because: "The Socket transport's send loop completed gracefully."
+
+2025-04-04 03:59:54.350 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEG" started.
+
+2025-04-04 03:59:55.080 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEF" stopped.
+
+2025-04-04 03:59:54.347 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEE" sending FIN because: "The Socket transport's send loop completed gracefully."
+
+2025-04-04 03:59:57.172 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEF" sending FIN because: "The Socket transport's send loop completed gracefully."
+
+2025-04-04 03:59:57.562 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Connection 0HNBJ2FU6JCEG established using the following protocol: "Tls12"
+
+2025-04-04 03:59:58.031 +03:00 [INF] Microsoft.Hosting.Lifetime Application started. Press Ctrl+C to shut down.
+
+2025-04-04 03:59:58.353 +03:00 [INF] Microsoft.Hosting.Lifetime Hosting environment: Development
+
+2025-04-04 03:59:58.939 +03:00 [INF] Microsoft.Hosting.Lifetime Content root path: D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.API
+
+2025-04-04 03:59:59.385 +03:00 [DBG] Microsoft.Extensions.Hosting.Internal.Host Hosting started
+
+2025-04-04 03:59:59.856 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/2 GET https://localhost:7296/swagger/index.html - null null
+
+2025-04-04 04:00:00.330 +03:00 [DBG] Microsoft.AspNetCore.HostFiltering.HostFilteringMiddleware Wildcard detected, all requests with hosts will be allowed.
+
+2025-04-04 04:00:00.905 +03:00 [DBG] Microsoft.AspNetCore.Routing.Matching.DfaMatcher No candidates found for the request path '/swagger/index.html'
+
+2025-04-04 04:00:01.236 +03:00 [DBG] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware Request did not match any endpoints
+
+2025-04-04 04:00:01.706 +03:00 [DBG] Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler AuthenticationScheme: Bearer was not authenticated.
+
+2025-04-04 04:00:02.118 +03:00 [DBG] Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware Response markup is scheduled to include Browser Link script injection.
+
+2025-04-04 04:00:02.524 +03:00 [DBG] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware Response markup is scheduled to include browser refresh script injection.
+
+2025-04-04 04:00:03.061 +03:00 [DBG] Microsoft.WebTools.BrowserLink.Net.BrowserLinkMiddleware Response markup was updated to include Browser Link script injection.
+
+2025-04-04 04:00:03.530 +03:00 [DBG] Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware Response markup was updated to include browser refresh script injection.
+
+2025-04-04 04:00:03.996 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/2 GET https://localhost:7296/_framework/aspnetcore-browser-refresh.js - null null
+
+2025-04-04 04:00:03.998 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/2 GET https://localhost:7296/_vs/browserLink - null null
+
+2025-04-04 04:00:04.491 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/2 GET https://localhost:7296/swagger/index.html - 200 null text/html;charset=utf-8 5640.2834ms
+
+2025-04-04 04:00:05.323 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/2 GET https://localhost:7296/_framework/aspnetcore-browser-refresh.js - 200 13789 application/javascript; charset=utf-8 1326.8653ms
+
+2025-04-04 04:00:05.723 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/2 GET https://localhost:7296/_vs/browserLink - 200 null text/javascript; charset=UTF-8 1725.388ms
+
+2025-04-04 04:00:06.144 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/2 GET https://localhost:7296/swagger/v1/swagger.json - null null
+
+2025-04-04 04:00:06.500 +03:00 [DBG] Microsoft.AspNetCore.Routing.Matching.DfaMatcher No candidates found for the request path '/swagger/v1/swagger.json'
+
+2025-04-04 04:00:07.013 +03:00 [DBG] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware Request did not match any endpoints
+
+2025-04-04 04:00:07.451 +03:00 [DBG] Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler AuthenticationScheme: Bearer was not authenticated.
+
+2025-04-04 04:00:07.902 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request finished HTTP/2 GET https://localhost:7296/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1758.3333ms
+
+2025-04-04 04:00:40.194 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEH" accepted.
+
+2025-04-04 04:00:40.194 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEH" received FIN.
+
+2025-04-04 04:00:58.643 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEH" started.
+
+2025-04-04 04:00:58.644 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEI" accepted.
+
+2025-04-04 04:01:01.563 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Failed to authenticate HTTPS connection.
+System.IO.IOException: Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveHandshakeFrameAsync[TIOAdapter](CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](Boolean receiveFirst, Byte[] reAuthenticationData, CancellationToken cancellationToken)
+   at System.Net.Security.SslStream.ProcessAuthenticationWithTelemetryAsync(Boolean isAsync, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+
+2025-04-04 04:01:01.566 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEI" started.
+
+2025-04-04 04:01:03.521 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEH" stopped.
+
+2025-04-04 04:01:04.512 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets Connection id "0HNBJ2FU6JCEH" sending FIN because: "The Socket transport's send loop completed gracefully."
+
+2025-04-04 04:01:04.512 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware Connection 0HNBJ2FU6JCEI established using the following protocol: "Tls12"
+
+2025-04-04 04:01:05.886 +03:00 [INF] Microsoft.AspNetCore.Hosting.Diagnostics Request starting HTTP/1.1 PUT https://localhost:7296/users/resetPassword - application/json 62
+
+2025-04-04 04:01:06.658 +03:00 [DBG] Microsoft.AspNetCore.Routing.Matching.DfaMatcher 1 candidate(s) found for the request path '/users/resetPassword'
+
+2025-04-04 04:01:07.312 +03:00 [DBG] Microsoft.AspNetCore.Routing.Matching.DfaMatcher Endpoint 'Khadamat_UserManagement.API.Controllers.UsersController.ResetPassword (Khadamat_UserManagement.API)' with route pattern 'Users/resetPassword' is valid for the request path '/users/resetPassword'
+
+2025-04-04 04:01:07.908 +03:00 [DBG] Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware Request matched endpoint 'Khadamat_UserManagement.API.Controllers.UsersController.ResetPassword (Khadamat_UserManagement.API)'
+
+2025-04-04 04:01:08.669 +03:00 [DBG] Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler Successfully validated the token.
+
+2025-04-04 04:01:09.150 +03:00 [DBG] Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler AuthenticationScheme: Bearer was successfully authenticated.
+
+2025-04-04 04:01:10.028 +03:00 [DBG] Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware Static files was skipped as the request already matched an endpoint.
+
+2025-04-04 04:01:10.773 +03:00 [DBG] Microsoft.EntityFrameworkCore.Infrastructure An 'IServiceProvider' was created for internal use by Entity Framework.
+
+2025-04-04 04:01:12.280 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-04 04:01:14.143 +03:00 [DBG] Microsoft.EntityFrameworkCore.Infrastructure Entity Framework Core 9.0.3 initialized 'Khadamat_UserDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:9.0.3' with options: EngineType=SqlServer 
+
+2025-04-04 04:01:14.955 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Connection Creating DbConnection.
+
+2025-04-04 04:01:15.466 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Connection Created DbConnection. (513ms).
+
+2025-04-04 04:01:16.199 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Connection Opening connection to database 'Khadamat_UserManagementDb' on server '.'.
+
+2025-04-04 04:01:16.380 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Connection Opened connection to database 'Khadamat_UserManagementDb' on server '.'.
+
+2025-04-04 04:01:16.822 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Transaction Beginning transaction with isolation level 'Unspecified'.
+
+2025-04-04 04:01:17.202 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Transaction Began transaction with isolation level 'ReadCommitted'.
+
+2025-04-04 04:01:17.858 +03:00 [DBG] Microsoft.AspNetCore.Authorization.DefaultAuthorizationService Authorization was successful.
+
+2025-04-04 04:01:18.487 +03:00 [INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executing endpoint 'Khadamat_UserManagement.API.Controllers.UsersController.ResetPassword (Khadamat_UserManagement.API)'
+
+2025-04-04 04:01:19.607 +03:00 [INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Route matched with {action = "ResetPassword", controller = "Users"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ResetPassword(Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest) on controller Khadamat_UserManagement.API.Controllers.UsersController (Khadamat_UserManagement.API).
+
+2025-04-04 04:01:20.119 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Execution plan of authorization filters (in the following order): ["None"]
+
+2025-04-04 04:01:20.346 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Execution plan of resource filters (in the following order): ["None"]
+
+2025-04-04 04:01:20.514 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+
+2025-04-04 04:01:20.661 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Execution plan of exception filters (in the following order): ["None"]
+
+2025-04-04 04:01:20.787 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+
+2025-04-04 04:01:20.947 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executing controller factory for controller Khadamat_UserManagement.API.Controllers.UsersController (Khadamat_UserManagement.API)
+
+2025-04-04 04:01:21.099 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed controller factory for controller Khadamat_UserManagement.API.Controllers.UsersController (Khadamat_UserManagement.API)
+
+2025-04-04 04:01:21.265 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder Attempting to bind parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest' ...
+
+2025-04-04 04:01:21.397 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder Attempting to bind parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest' using the name '' in request data ...
+
+2025-04-04 04:01:21.551 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+
+2025-04-04 04:01:21.714 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel Connection id "0HNBJ2FU6JCEI", Request id "0HNBJ2FU6JCEI:00000001": started reading request body.
+
+2025-04-04 04:01:21.867 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel Connection id "0HNBJ2FU6JCEI", Request id "0HNBJ2FU6JCEI:00000001": done reading request body.
+
+2025-04-04 04:01:22.039 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter JSON input formatter succeeded, deserializing to type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest'
+
+2025-04-04 04:01:22.190 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder Done attempting to bind parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest'.
+
+2025-04-04 04:01:22.361 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder Done attempting to bind parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest'.
+
+2025-04-04 04:01:22.521 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder Attempting to validate the bound parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest' ...
+
+2025-04-04 04:01:22.685 +03:00 [DBG] Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder Done attempting to validate the bound parameter 'request' of type 'Khadamat_UserManagement.Contracts.Users.ResetPasswordRequest'.
+
+2025-04-04 04:01:22.963 +03:00 [DBG] Microsoft.EntityFrameworkCore.Query Compiling query expression: 
+'DbSet<User>()
+    .FirstOrDefault(u => u.UserName == __UserName_0)'
+
+2025-04-04 04:01:23.327 +03:00 [DBG] Microsoft.EntityFrameworkCore.Query Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<User>(
+    asyncEnumerable: SingleQueryingEnumerable.Create<User>(
+        relationalQueryContext: (RelationalQueryContext)queryContext, 
+        relationalCommandResolver: parameters => [LIFTABLE Constant: RelationalCommandCache.QueryExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.IsActive (bool) Required, 2], [Property: User.Roles (int) Required, 3], [Property: User.UserName (string) Required Index MaxLength(500), 4], [Property: User._hashedPassword (_hashedPassword, string) Required MaxLength(100), 5] }
+            SELECT TOP(1) u.Id, u.Email, u.IsActive, u.Roles, u.UserName, u.HashedPassword
+            FROM Users AS u
+            WHERE u.UserName == @__UserName_0) | Resolver: c => new RelationalCommandCache(
+            c.Dependencies.MemoryCache, 
+            c.RelationalDependencies.QuerySqlGeneratorFactory, 
+            c.RelationalDependencies.RelationalParameterBasedSqlProcessorFactory, 
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: User.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: User.Email (string) Required Index, 1], [Property: User.IsActive (bool) Required, 2], [Property: User.Roles (int) Required, 3], [Property: User.UserName (string) Required Index MaxLength(500), 4], [Property: User._hashedPassword (_hashedPassword, string) Required MaxLength(100), 5] }
+            SELECT TOP(1) u.Id, u.Email, u.IsActive, u.Roles, u.UserName, u.HashedPassword
+            FROM Users AS u
+            WHERE u.UserName == @__UserName_0, 
+            False, 
+            new HashSet<string>(
+                new string[]{ }, 
+                StringComparer.Ordinal
+            )
+        )].GetRelationalCommandTemplate(parameters), 
+        readerColumns: null, 
+        shaper: (queryContext, dataReader, resultContext, resultCoordinator) => 
+        {
+            User entity;
+            entity = 
+            {
+                MaterializationContext materializationContext1;
+                IEntityType entityType1;
+                User instance1;
+                InternalEntityEntry entry1;
+                bool hasNullKey1;
+                materializationContext1 = new MaterializationContext(
+                    [LIFTABLE Constant: ValueBuffer | Resolver: _ => (object)ValueBuffer.Empty], 
+                    queryContext.Context
+                );
+                instance1 = default(User);
+                entry1 = queryContext.TryGetEntry(
+                    key: [LIFTABLE Constant: Key: User.Id PK | Resolver: c => c.Dependencies.Model.FindEntityType("Khadamat_UserManagement.Domain.UserAggregate.User").FindPrimaryKey()], 
+                    keyValues: new object[]{ (object)dataReader.GetInt32(0) }, 
+                    throwOnNullKey: True, 
+                    hasNullKey: hasNullKey1);
+                !(hasNullKey1) ? entry1 != default(InternalEntityEntry) ? 
+                {
+                    entityType1 = entry1.EntityType;
+                    return instance1 = (User)entry1.Entity;
+                } : 
+                {
+                    ISnapshot shadowSnapshot1;
+                    shadowSnapshot1 = [LIFTABLE Constant: Snapshot | Resolver: _ => Snapshot.Empty];
+                    entityType1 = [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{0} => namelessParameter{0}.Dependencies.Model.FindEntityType("Khadamat_UserManagement.Domain.UserAggregate.User")];
+                    instance1 = switch (entityType1)
+                    {
+                        case [LIFTABLE Constant: EntityType: User | Resolver: namelessParameter{1} => namelessParameter{1}.Dependencies.Model.FindEntityType("Khadamat_UserManagement.Domain.UserAggregate.User")]: 
+                            {
+                                return new User(
+                                    dataReader.GetString(4), 
+                                    dataReader.GetString(5), 
+                                    dataReader.GetString(1), 
+                                    dataReader.GetInt32(3), 
+                                    dataReader.GetBoolean(2), 
+                                    dataReader.GetInt32(0)
+                                );
+                            }
+                        default: 
+                            default(User)
+                    }
+                    ;
+                    entry1 = entityType1 == default(IEntityType) ? default(InternalEntityEntry) : queryContext.StartTracking(
+                        entityType: entityType1, 
+                        entity: instance1, 
+                        snapshot: shadowSnapshot1);
+                    return instance1;
+                } : default(void);
+                return instance1;
+            };
+            return entity;
+        }, 
+        contextType: Khadamat_UserManagement.Infrastructure.Common.Persistence.Khadamat_UserDbContext, 
+        standAloneStateManager: False, 
+        detailedErrorsEnabled: False, 
+        threadSafetyChecksEnabled: True), 
+    cancellationToken: queryContext.CancellationToken)'
+
+2025-04-04 04:01:23.522 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteReader'.
+
+2025-04-04 04:01:23.609 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteReader' (82ms).
+
+2025-04-04 04:01:23.769 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteReader' (246ms).
+
+2025-04-04 04:01:23.940 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[@__UserName_0='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsActive], [u].[Roles], [u].[UserName], [u].[HashedPassword]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__UserName_0
+
+2025-04-04 04:01:24.127 +03:00 [INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (186ms) [Parameters=[@__UserName_0='?' (Size = 500)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsActive], [u].[Roles], [u].[UserName], [u].[HashedPassword]
+FROM [Users] AS [u]
+WHERE [u].[UserName] = @__UserName_0
+
+2025-04-04 04:01:24.653 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking Context 'Khadamat_UserDbContext' started tracking 'User' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+
+2025-04-04 04:01:24.938 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Closing data reader to 'Khadamat_UserManagementDb' on server '.'.
+
+2025-04-04 04:01:25.276 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command A data reader for 'Khadamat_UserManagementDb' on server '.' is being disposed after spending 658ms reading results.
+
+2025-04-04 04:01:26.496 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking An entity of type 'User' tracked by 'Khadamat_UserDbContext' changed state from '"Unchanged"' to '"Modified"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+
+2025-04-04 04:01:41.520 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking DetectChanges starting for 'Khadamat_UserDbContext'.
+
+2025-04-04 04:01:42.257 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking DetectChanges completed for 'Khadamat_UserDbContext'.
+
+2025-04-04 04:01:42.403 +03:00 [DBG] Microsoft.EntityFrameworkCore.Update SaveChanges starting for 'Khadamat_UserDbContext'.
+
+2025-04-04 04:01:42.554 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking DetectChanges starting for 'Khadamat_UserDbContext'.
+
+2025-04-04 04:01:42.707 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking DetectChanges completed for 'Khadamat_UserDbContext'.
+
+2025-04-04 04:01:42.926 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Transaction Creating transaction savepoint.
+
+2025-04-04 04:01:43.482 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Transaction Created transaction savepoint.
+
+2025-04-04 04:01:44.042 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Creating DbCommand for 'ExecuteReader'.
+
+2025-04-04 04:01:44.431 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Created DbCommand for 'ExecuteReader' (389ms).
+
+2025-04-04 04:01:44.866 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Initialized DbCommand for 'ExecuteReader' (824ms).
+
+2025-04-04 04:01:45.294 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Executing DbCommand [Parameters=[@p5='?' (DbType = Int32), @p0='?' (Size = 450), @p1='?' (DbType = Boolean), @p2='?' (DbType = Int32), @p3='?' (Size = 500), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Email] = @p0, [IsActive] = @p1, [Roles] = @p2, [UserName] = @p3, [HashedPassword] = @p4
+OUTPUT 1
+WHERE [Id] = @p5;
+
+2025-04-04 04:01:45.693 +03:00 [INF] Microsoft.EntityFrameworkCore.Database.Command Executed DbCommand (399ms) [Parameters=[@p5='?' (DbType = Int32), @p0='?' (Size = 450), @p1='?' (DbType = Boolean), @p2='?' (DbType = Int32), @p3='?' (Size = 500), @p4='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Users] SET [Email] = @p0, [IsActive] = @p1, [Roles] = @p2, [UserName] = @p3, [HashedPassword] = @p4
+OUTPUT 1
+WHERE [Id] = @p5;
+
+2025-04-04 04:01:46.156 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command Closing data reader to 'Khadamat_UserManagementDb' on server '.'.
+
+2025-04-04 04:01:46.583 +03:00 [DBG] Microsoft.EntityFrameworkCore.Database.Command A data reader for 'Khadamat_UserManagementDb' on server '.' is being disposed after spending 432ms reading results.
+
+2025-04-04 04:01:47.043 +03:00 [DBG] Microsoft.EntityFrameworkCore.ChangeTracking An entity of type 'User' tracked by 'Khadamat_UserDbContext' changed state from '"Modified"' to '"Unchanged"'. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+
+2025-04-04 04:01:47.396 +03:00 [DBG] Microsoft.EntityFrameworkCore.Update SaveChanges completed for 'Khadamat_UserDbContext' with 1 entities written to the database.
+
+2025-04-04 04:01:47.821 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+
+2025-04-04 04:01:48.143 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector No information found on request to perform content negotiation.
+
+2025-04-04 04:01:48.541 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+
+2025-04-04 04:01:48.962 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector Attempting to select the first formatter in the output formatters list which can write the result.
+
+2025-04-04 04:01:49.772 +03:00 [DBG] Microsoft.AspNetCore.Mvc.Infrastructure.DefaultOutputFormatterSelector Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+
+2025-04-04 04:01:49.957 +03:00 [INF] Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor Executing OkObjectResult, writing value of type 'Khadamat_UserManagement.Contracts.Users.AuthenticationResponse'.
+
+2025-04-04 04:01:50.406 +03:00 [INF] Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker Executed action Khadamat_UserManagement.API.Controllers.UsersController.ResetPassword (Khadamat_UserManagement.API) in 29458.1932ms
+
+2025-04-04 04:01:50.819 +03:00 [INF] Microsoft.AspNetCore.Routing.EndpointMiddleware Executed endpoint 'Khadamat_UserManagement.API.Controllers.UsersController.ResetPassword (Khadamat_UserManagement.API)'
+
+2025-04-04 04:01:51.298 +03:00 [DBG] Microsoft.AspNetCore.Server.Kestrel.Connections Connection id "0HNBJ2FU6JCEI" completed keep alive response.
+
+2025-04-04 04:01:52.654 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-04 04:05:10.081 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-04 04:06:07.112 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+

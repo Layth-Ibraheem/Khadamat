@@ -1,0 +1,40 @@
+[2025-04-03 02:13:45] PasswordResetedDomainEvent Error:
+Message: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials 4fb4d7f45d1cf-5f088084dedsm94695a12.49 - gsmtp
+Type: AuthenticationException
+Stack:    at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.PublishNonCriticalEvents(IPublisher publisher, List`1 nonCriticalEvents) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 77
+
+[2025-04-03 02:16:17] CRITICAL Error:
+Message: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7c01c2155sm241966b.184 - gsmtp
+Type: AuthenticationException
+Stack:    at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.<>c__DisplayClass2_0.<<InvokeAsync>b__0>d.MoveNext() in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 41
+
+[2025-04-03 02:17:38] CRITICAL Error:
+Message: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7bfe5d442sm1416166b.26 - gsmtp
+Type: AuthenticationException
+Stack:    at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.<>c__DisplayClass2_0.<<InvokeAsync>b__0>d.MoveNext() in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 41
+
+[2025-04-03 02:32:10] PasswordResetedDomainEvent Error:
+Message: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7bfe5d3d8sm2579966b.31 - gsmtp
+Type: AuthenticationException
+Stack:    at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.PublishNonCriticalEvents(IPublisher publisher, IEmailSender emailSender, List`1 nonCriticalEvents) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 77
+

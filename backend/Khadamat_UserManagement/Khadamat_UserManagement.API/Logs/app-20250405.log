@@ -1,0 +1,94 @@
+2025-04-05 19:45:54.072 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 19:48:29.849 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 19:49:25.311 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:14:31.735 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:19:32.261 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:19:51.463 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:19:59.841 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:27:52.630 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:27:53.614 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:28:31.911 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:28:33.907 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:28:34.526 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:28:40.104 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:32:44.177 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:32:45.150 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:33:03.254 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:33:04.285 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-05 20:33:21.982 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 20:33:28.593 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 20:33:30.197 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 20:34:27.723 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event UserLoggedInDomainEvent
+
+2025-04-05 22:26:14.452 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 22:27:01.017 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 22:30:40.298 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 22:32:28.191 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 22:34:51.845 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 22:36:42.325 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 22:38:34.364 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 22:38:42.635 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 22:41:20.423 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 22:56:33.810 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event PasswordResetedDomainEvent
+
+2025-04-05 23:31:05.125 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 23:32:40.189 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 23:32:40.207 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 23:33:05.495 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event PasswordResetedDomainEvent
+
+2025-04-05 23:40:07.216 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 23:40:07.489 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 23:40:07.498 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 23:40:14.684 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event PasswordResetedDomainEvent
+
+2025-04-05 23:41:02.022 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-05 23:41:02.204 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 23:41:02.207 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 23:41:09.876 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event UserLoggedInDomainEvent
+
+2025-04-05 23:44:05.802 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-05 23:44:07.991 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-05 23:44:08.003 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-05 23:44:22.061 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event PasswordResetedDomainEvent
+

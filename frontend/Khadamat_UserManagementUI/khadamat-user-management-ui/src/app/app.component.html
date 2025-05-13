@@ -1,0 +1,13 @@
+<div class="app-container">
+  <!-- Loader Component -->
+  <app-loader
+    [isLoading]="loaderService.isLoading$ | async"
+    [loadingText]="loaderService.loadingText$ | async">
+  </app-loader>
+
+  <!-- Main Content -->
+  <!--  <main class="flex-grow-1">-->
+  <router-outlet></router-outlet>
+  <!--  </main>-->
+
+</div>

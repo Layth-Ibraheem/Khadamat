@@ -1,0 +1,44 @@
+<mat-card class="dialog-card">
+  <mat-card-header class="dialog-header accent-bg">
+    <mat-card-title>Assign Roles</mat-card-title>
+    <mat-card-subtitle>Select permissions for {{ data.username }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content class="dialog-content">
+    <form [formGroup]="roleForm">
+      <div class="role-options">
+        @for (role of roleOptions; track role.value; let i = $index) {
+          <div class="role-option">
+            <mat-checkbox [formControl]="getControl(i)">
+              <div class="role-info">
+                <div class="role-name">{{ role.name }}</div>
+                <div class="role-description">{{ role.description }}</div>
+              </div>
+            </mat-checkbox>
+          </div>
+        }
+      </div>
+    </form>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions class="dialog-actions">
+    <button mat-stroked-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="onApprove()"
+            [disabled]="selectedRoles.length === 0">
+      Approve Application And Assign Roles
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+@if (showDebugInfo) {
+  <div class="debug-info">
+    Selected Roles: {{ selectedRoles | json }}<br>
+    Calculated Value: {{ selectedRoleValue }} ({{ selectedRoleValue | number:'2.0-0' }})
+  </div>
+}

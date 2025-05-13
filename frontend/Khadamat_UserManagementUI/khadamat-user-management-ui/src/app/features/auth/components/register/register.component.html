@@ -1,0 +1,136 @@
+<div class="register-container">
+  <div class="register-card">
+    <!-- Card Header -->
+    <div class="card-header">
+      <div class="logo-container">
+        <div class="logo-circle">
+          <mat-icon class="app-logo">admin_panel_settings</mat-icon>
+        </div>
+        <h1 class="app-title">Khadamat</h1>
+      </div>
+      <h2 class="app-subtitle">User Management System</h2>
+      <p class="welcome-text">Join our platform today</p>
+    </div>
+
+    <!-- Register Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form">
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-container">
+          <mat-icon class="input-icon">person</mat-icon>
+          <input type="text" id="username" formControlName="username"
+                 placeholder="Enter your username" autocomplete="username">
+        </div>
+        @if (username?.invalid && username?.dirty) {
+          <div class="error-message">
+            @if (username?.errors?.['required']) {
+              <span>Username is required</span>
+            }
+            @if (username?.errors?.['minlength']) {
+              <span>At least 4 characters</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-container">
+          <mat-icon class="input-icon">email</mat-icon>
+          <input type="email" id="email" formControlName="email"
+                 placeholder="your@email.com" autocomplete="email">
+        </div>
+        @if (email?.invalid && email?.dirty) {
+          <div class="error-message">
+            @if (email?.errors?.['required']) {
+              <span>Email is required</span>
+            }
+            @if (email?.errors?.['email']) {
+              <span>Valid email required</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-container">
+          <mat-icon class="input-icon">lock</mat-icon>
+          <input [type]="hidePassword ? 'password' : 'text'" id="password"
+                 formControlName="password" placeholder="Create password" autocomplete="new-password">
+          <button type="button" class="toggle-password" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        @if (password?.invalid && password?.dirty) {
+          <div class="error-message">
+            @if (password?.errors?.['required']) {
+              <span>Password is required</span>
+            }
+            @if (password?.errors?.['minlength']) {
+              <span>Minimum 8 characters</span>
+            }
+          </div>
+        }
+      </div>
+
+      <!-- Confirm Password Field -->
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="input-container">
+          <mat-icon class="input-icon">lock_reset</mat-icon>
+          <input [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword"
+                 formControlName="confirmPassword" placeholder="Confirm password" autocomplete="new-password">
+          <button type="button" class="toggle-password" (click)="hideConfirmPassword = !hideConfirmPassword">
+            <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        @if (confirmPassword?.hasError('passwordMismatch') && confirmPassword?.dirty) {
+          <div class="error-message">
+            <span>Passwords don't match</span>
+          </div>
+        }
+      </div>
+
+      <!-- Terms Checkbox - Fixed Contrast -->
+      <div class="terms-group">
+        <input type="checkbox" id="terms" formControlName="terms">
+        <label for="terms">
+          I agree to the <a href="#" class="terms-link">Terms</a> and <a href="#" class="terms-link">Privacy Policy</a>
+        </label>
+        
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">
+        <span>Create Account</span>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+      <!-- Divider -->
+      <div class="divider">
+        <span>or continue with</span>
+      </div>
+
+      <!-- Social Buttons -->
+      <div class="social-buttons">
+        <button type="button" class="social-btn google">
+          <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google">
+          <span>Google</span>
+        </button>
+        <button type="button" class="social-btn facebook">
+          <img src="https://www.vectorlogo.zone/logos/facebook/facebook-official.svg" alt="Facebook">
+          <span>Facebook</span>
+        </button>
+      </div>
+
+      <!-- Login Link -->
+      <div class="login-link">
+        Already have an account? <a routerLink="/login">Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>

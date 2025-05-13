@@ -1,0 +1,213 @@
+<div class="admin-app">
+  <!-- Navigation Bar -->
+  <nav class="admin-navbar">
+    <div class="navbar-brand">
+      <mat-icon class="brand-icon">admin_panel_settings</mat-icon>
+      <h1 routerLink="/home" style="cursor: pointer;">Khadamat User Management System</h1>
+    </div>
+
+    <div class="user-controls">
+      <!-- Updated Notification Button -->
+      <button mat-icon-button class="notification-btn">
+        <mat-icon>notifications</mat-icon>
+        <span class="notification-badge">3</span>
+      </button>
+
+      <div ngbDropdown class="user-profile-dropdown" placement="bottom-end">
+        <div class="user-profile" ngbDropdownToggle>
+          <!--          <img src="assets/images/admin-avatar.jpg" alt="Admin avatar" class="profile-avatar">-->
+          <div class="profile-info">
+            <span class="profile-name">{{ username?.toUpperCase() }}</span>
+          </div>
+          <mat-icon class="profile-arrow">expand_more</mat-icon>
+        </div>
+
+        <div ngbDropdownMenu class="user-context-menu">
+          <button ngbDropdownItem (click)="goToChangePassword()">
+            <div class="menu-item-content">
+              <mat-icon class="menu-icon">account_circle</mat-icon>
+              <div class="menu-text">
+                <span class="menu-title">My Profile</span>
+                <span class="menu-subtitle">View & edit profile</span>
+              </div>
+            </div>
+          </button>
+
+          <button ngbDropdownItem>
+            <div class="menu-item-content">
+              <mat-icon class="menu-icon">settings</mat-icon>
+              <div class="menu-text">
+                <span class="menu-title">Settings</span>
+                <span class="menu-subtitle">Account preferences</span>
+              </div>
+            </div>
+          </button>
+
+          <div class="dropdown-divider"></div>
+
+          <button ngbDropdownItem class="logout-item" (click)="logout()">
+            <div class="menu-item-content">
+              <mat-icon class="menu-icon">logout</mat-icon>
+              <div class="menu-text">
+                <span class="menu-title">Logout</span>
+                <span class="menu-subtitle">Sign out of account</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Main Content -->
+  <div class="admin-container">
+    <!-- Bootstrap Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <h3>User Management</h3>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">dashboard</mat-icon>
+              <span class="sidebar-text">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/users" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">people_alt</mat-icon>
+              <span class="sidebar-text">All Users</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home/applications" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">work</mat-icon>
+              <span class="sidebar-text">Register Applications</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/clients" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">business</mat-icon>
+              <span class="sidebar-text">Clients</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/verifications" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">verified</mat-icon>
+              <span class="sidebar-text">Verifications</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reports" routerLinkActive="active">
+              <mat-icon class="sidebar-icon">bar_chart</mat-icon>
+              <span class="sidebar-text">Reports</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status">
+          <div class="status-indicator active"></div>
+          <span>System Operational</span>
+        </div>
+        <button class="btn btn-outline-primary support-btn w-100">
+          <mat-icon>help</mat-icon>
+          <span>Support</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Content Area -->
+    <main class="admin-content">
+      <router-outlet></router-outlet>
+
+      @if (isDashboardRoute) {
+        <!-- Dashboard Overview (example content) -->
+        <div class="dashboard-overview">
+          <div class="welcome-card">
+            <h2>User Management Console</h2>
+            <p>Manage freelancers, clients, and platform users with these quick actions</p>
+
+            <div class="quick-actions">
+              <button mat-stroked-button>
+                <mat-icon>person_add</mat-icon>
+                Add New User
+              </button>
+              <button mat-stroked-button>
+                <mat-icon>verified_user</mat-icon>
+                Verify Accounts
+              </button>
+              <button mat-stroked-button>
+                <mat-icon>admin_panel_settings</mat-icon>
+                Manage Roles
+              </button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <mat-icon>people</mat-icon>
+                <h3>Total Users</h3>
+              </div>
+              <div class="stat-value">1,248</div>
+              <div class="stat-trend positive">
+                <mat-icon>trending_up</mat-icon>
+                <span>12% from last month</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <mat-icon>work</mat-icon>
+                <h3>Freelancers</h3>
+              </div>
+              <div class="stat-value">932</div>
+              <div class="stat-trend positive">
+                <mat-icon>trending_up</mat-icon>
+                <span>8% from last month</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <mat-icon>business</mat-icon>
+                <h3>Clients</h3>
+              </div>
+              <div class="stat-value">316</div>
+              <div class="stat-trend negative">
+                <mat-icon>trending_down</mat-icon>
+                <span>3% from last month</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <mat-icon>verified</mat-icon>
+                <h3>Verified</h3>
+              </div>
+              <div class="stat-value">784</div>
+              <div class="stat-trend positive">
+                <mat-icon>trending_up</mat-icon>
+                <span>15% from last month</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+    </main>
+
+  </div>
+
+
+</div>

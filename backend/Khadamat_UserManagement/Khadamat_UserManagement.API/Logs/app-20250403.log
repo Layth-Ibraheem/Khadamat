@@ -1,0 +1,24 @@
+2025-04-03 04:08:53.379 +03:00 [DBG] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processing request for user with id: 1
+
+2025-04-03 04:09:41.369 +03:00 [WRN] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Non-critical event processing failed
+MailKit.Security.AuthenticationException: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7c01bfa5csm9993066b.166 - gsmtp
+ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7c01bfa5csm9993066b.166 - gsmtp
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.ProcessNonCriticalEvents(IPublisher publisher, IEmailSender emailSender, IEnumerable`1 events) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 104
+
+2025-04-03 04:10:05.285 +03:00 [ERR] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Failed to send non-critical error email
+MailKit.Security.AuthenticationException: 535: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7c0185e26sm10141366b.135 - gsmtp
+ ---> MailKit.Net.Smtp.SmtpCommandException: 5.7.8 Username and Password not accepted. For more information, go to
+5.7.8  https://support.google.com/mail/?p=BadCredentials a640c23a62f3a-ac7c0185e26sm10141366b.135 - gsmtp
+   --- End of inner exception stack trace ---
+   at MailKit.Net.Smtp.SmtpClient.AuthenticateAsync(Encoding encoding, ICredentials credentials, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 66
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.HandleNonCriticalError(Exception ex, IEmailSender emailSender) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 140
+

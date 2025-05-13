@@ -1,0 +1,96 @@
+2025-04-07 21:02:52.008 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:03:46.223 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:06:04.463 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:09:28.493 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:10:32.759 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:13:45.970 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:17:17.472 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:27:59.965 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:33:45.336 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:44:14.061 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:46:20.713 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 0
+
+2025-04-07 21:47:18.580 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-07 21:48:03.659 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-07 21:48:41.912 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Processed non-critical event UserLoggedInDomainEvent
+
+2025-04-07 22:31:27.963 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 22:31:58.856 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 22:32:36.826 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 22:32:55.378 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Found 1 domain events to process
+
+2025-04-07 22:33:09.932 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Transaction committed
+
+2025-04-07 22:33:47.649 +03:00 [WRN] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Non-critical event PasswordResetedDomainEvent failed
+System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, Int64 startingTimestamp)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, CancellationToken cancellationToken)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, Int32 timeout, CancellationToken cancellationToken)
+   at MailKit.MailService.ConnectNetworkAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.ConnectAsync(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 65
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.<>c__DisplayClass3_1.<<InvokeAsync>b__0>d.MoveNext() in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 107
+
+2025-04-07 22:34:27.643 +03:00 [WRN] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Non-critical event processing failed
+Event: PasswordResetedDomainEvent
+System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, Int64 startingTimestamp)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, CancellationToken cancellationToken)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, Int32 timeout, CancellationToken cancellationToken)
+   at MailKit.MailService.ConnectNetworkAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.ConnectAsync(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 65
+   at Khadamat_UserManagement.Application.Users.Events.PasswordResetedEventHandler.Handle(PasswordResetedDomainEvent notification, CancellationToken cancellationToken) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Application\Users\Events\PasswordResetedEventHandler.cs:line 25
+   at MediatR.NotificationPublishers.ForeachAwaitPublisher.Publish(IEnumerable`1 handlerExecutors, INotification notification, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.<>c__DisplayClass3_1.<<InvokeAsync>b__0>d.MoveNext() in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 107
+
+2025-04-07 22:35:25.023 +03:00 [ERR] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Failed to send non-critical error email
+System.Net.Sockets.SocketException (11001): No such host is known.
+   at System.Net.NameResolutionPal.ProcessResult(SocketError errorCode, GetAddrInfoExContext* context)
+   at System.Net.NameResolutionPal.GetAddressInfoExCallback(Int32 error, Int32 bytes, NativeOverlapped* overlapped)
+--- End of stack trace from previous location ---
+   at System.Net.Dns.<GetAddrInfoWithTelemetryAsync>g__CompleteAsync|34_0[T](Task task, String hostName, Int64 startingTimestamp)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, CancellationToken cancellationToken)
+   at MailKit.Net.SocketUtils.ConnectAsync(String host, Int32 port, IPEndPoint localEndPoint, Int32 timeout, CancellationToken cancellationToken)
+   at MailKit.MailService.ConnectNetworkAsync(String host, Int32 port, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.ConnectAsync(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at Khadamat_UserManagement.Infrastructure.Common.Email.EmailSender.SendEmailAsync(String from, String to, String subject, String body, Boolean isHtml) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Email\EmailSender.cs:line 65
+   at Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware.HandleNonCriticalError(Exception ex, IEmailSender emailSender, INonCriticalDomainEvent exceptionEvent) in D:\Khadamat\Khadamat_UserManagement\Khadamat_UserManagement.Infrastructure\Common\Middleware\EventualConsistencyMiddleware.cs:line 167
+
+2025-04-07 22:37:25.589 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 22:37:50.194 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware No domain events to process
+
+2025-04-07 22:46:18.693 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 22:47:44.934 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 23:03:22.247 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 23:35:08.414 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+
+2025-04-07 23:35:16.585 +03:00 [INF] Khadamat_UserManagement.Infrastructure.Common.Middleware.EventualConsistencyMiddleware Starting request processing for user 1
+

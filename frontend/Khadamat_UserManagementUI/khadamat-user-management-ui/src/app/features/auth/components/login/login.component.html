@@ -1,0 +1,85 @@
+<div class="login-container">
+  <mat-card class="login-card mat-elevation-z8">
+    <!-- Card Header -->
+    <div class="card-header">
+      <div class="logo-container">
+        <mat-icon class="app-logo">admin_panel_settings</mat-icon>
+        <h1 class="app-title">Khadamat</h1>
+      </div>
+      <h2 class="mat-subtitle-1">User Management System</h2>
+      <p class="welcome-text">Welcome back! Please sign in to continue</p>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="login-form">
+      <!-- Username Field -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" autocomplete="username">
+        <mat-icon matPrefix class="field-icon">person</mat-icon>
+        @if (username?.hasError('required')) {
+          <mat-error>Username is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'"
+               formControlName="password" autocomplete="current-password">
+        <button type="button" mat-icon-button matSuffix
+                (click)="hidePassword = !hidePassword"
+                matTooltip="{{hidePassword ? 'Show password' : 'Hide password'}}">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-icon matPrefix class="field-icon">lock</mat-icon>
+        @if (password?.hasError('required')) {
+          <mat-error>Password is required</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="form-options">
+        <mat-checkbox>Remember me</mat-checkbox>
+        <a class="forgot-password" routerLink="/forgetPassword">Forgot password?</a>
+      </div>
+
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit"
+              [disabled]="loginForm.invalid" class="submit-button">
+        <span>Sign In</span>
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+      <!-- Divider -->
+      <div class="divider">
+        <mat-divider></mat-divider>
+        <span class="divider-text">or continue with</span>
+        <mat-divider></mat-divider>
+      </div>
+
+      <!-- Social Login Buttons -->
+      <div class="social-login">
+        <button mat-stroked-button class="social-btn google">
+          <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google" class="social-icon">
+          Google
+        </button>
+        <button mat-stroked-button class="social-btn facebook">
+          <img src="https://www.vectorlogo.zone/logos/facebook/facebook-official.svg" alt="Facebook"
+               class="social-icon">
+          Facebook
+        </button>
+        <button mat-stroked-button class="social-btn twitter">
+          <img src="https://www.vectorlogo.zone/logos/twitter/twitter-tile.svg" alt="Twitter" class="social-icon">
+          Twitter
+        </button>
+      </div>
+
+      <!-- Sign Up Link -->
+      <p class="signup-text">
+        Don't have an account?
+        <a class="signup-link" routerLink="/register">Create account</a>
+      </p>
+    </form>
+  </mat-card>
+</div>

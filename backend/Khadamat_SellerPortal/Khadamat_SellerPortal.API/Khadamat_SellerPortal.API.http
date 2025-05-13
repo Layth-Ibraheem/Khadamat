@@ -1,0 +1,6 @@
+@Khadamat_SellerPortal.API_HostAddress = http://localhost:5273
+
+GET {{Khadamat_SellerPortal.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

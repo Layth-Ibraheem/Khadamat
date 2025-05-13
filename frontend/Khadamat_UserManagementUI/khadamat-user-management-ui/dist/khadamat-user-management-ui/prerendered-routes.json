@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/": {},
+    "/forgetPassword": {},
+    "/home": {},
+    "/home/changePassword": {},
+    "/login": {},
+    "/register": {}
+  }
+}

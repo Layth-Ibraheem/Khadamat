@@ -1,0 +1,37 @@
+<mat-card class="dialog-card">
+  <mat-card-header class="dialog-header warn-bg">
+    <mat-card-title class="dialog-title">Reject Application</mat-card-title>
+    <mat-card-subtitle class="dialog-subtitle">Provide reason for rejecting {{ data.username }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content class="dialog-content">
+    <mat-form-field appearance="outline" class="w-full">
+      <textarea matInput
+                [formControl]="reasonControl"
+                placeholder="Please provide detailed reason..."
+                rows="4"></textarea>
+      @if (reasonControl.hasError('required')) {
+        <mat-error>Reason is required</mat-error>
+      }
+      @if (reasonControl.hasError('minlength')) {
+        <mat-error>Minimum 10 characters required</mat-error>
+      }
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions class="dialog-actions">
+    <button mat-stroked-button (click)="onCancel()" class="cancel-btn">Cancel</button>
+    <button mat-raised-button
+            color="warn"
+            (click)="onReject()"
+            [disabled]="reasonControl.invalid"
+            class="reject-btn">
+      Confirm Rejection
+    </button>
+  </mat-card-actions>
+  <h1></h1>
+</mat-card>

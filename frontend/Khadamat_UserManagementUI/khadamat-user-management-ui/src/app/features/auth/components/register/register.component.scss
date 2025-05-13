@@ -1,0 +1,371 @@
+// Modern color palette
+$primary: #6c5ce7;
+$secondary: #a29bfe;
+$accent: #fd79a8;
+$dark: #2d3436;
+$light: #f5f6fa;
+$success: #00b894;
+$error: #d63031;
+
+// Shadows and transitions
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #dfe6e9 100%);
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    background: $light;
+  }
+}
+
+.register-card {
+  width: 100%;
+  max-width: 480px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.card-header {
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+  color: white;
+  text-align: center;
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .logo-circle {
+      width: 72px;
+      height: 72px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(5px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+
+      .app-logo {
+        font-size: 36px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    .app-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin: 0.25rem 0;
+  }
+
+  .welcome-text {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0.5rem 0 0;
+  }
+}
+
+.register-form {
+  padding: 2rem;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: $dark;
+    }
+
+    .input-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-icon {
+        position: absolute;
+        left: 16px;
+        color: rgba($dark, 0.5);
+        font-size: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 14px 20px 14px 48px;
+        border: 1px solid rgba($dark, 0.1);
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: $transition;
+        background: rgba($light, 0.5);
+
+        &:focus {
+          border-color: $primary;
+          box-shadow: 0 0 0 3px rgba($primary, 0.1);
+          outline: none;
+          background: white;
+        }
+
+        &::placeholder {
+          color: rgba($dark, 0.3);
+        }
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 16px;
+        background: none;
+        border: none;
+        color: rgba($dark, 0.4);
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          color: $primary;
+        }
+
+        mat-icon {
+          font-size: 20px;
+        }
+      }
+    }
+
+    .error-message {
+      color: $error;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      animation: fadeIn 0.3s ease;
+    }
+  }
+
+  .terms-group {
+    display: flex;
+    align-items: flex-start;
+    margin: 1.75rem 0;
+
+    input[type="checkbox"] {
+      margin-right: 12px;
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: $primary;
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: rgba($dark, 0.7);
+      line-height: 1.5;
+      cursor: pointer;
+
+      .terms-link {
+        color: $primary;
+        font-weight: 500;
+        text-decoration: none;
+        transition: $transition;
+
+        &:hover {
+          color: darken($primary, 10%);
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .error-message {
+      color: $error;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(to right, $primary, darken($primary, 5%));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: $shadow-sm;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+      background: linear-gradient(to right, darken($primary, 3%), darken($primary, 8%));
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: rgba($dark, 0.1);
+      color: rgba($dark, 0.4);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    mat-icon {
+      margin-left: 8px;
+      font-size: 20px;
+    }
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 1.75rem 0;
+    color: rgba($dark, 0.4);
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    &::before, &::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid rgba($dark, 0.1);
+    }
+
+    &::before {
+      margin-right: 1rem;
+    }
+
+    &::after {
+      margin-left: 1rem;
+    }
+  }
+
+  .social-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    .social-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba($dark, 0.1);
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: $transition;
+      font-size: 0.9rem;
+      font-weight: 500;
+
+      img {
+        width: 18px;
+        height: 18px;
+        margin-right: 8px;
+      }
+
+      &.google {
+        color: #DB4437;
+
+        &:hover {
+          background: rgba(219, 68, 55, 0.05);
+          border-color: rgba(219, 68, 55, 0.3);
+        }
+      }
+
+      &.facebook {
+        color: #4267B2;
+
+        &:hover {
+          background: rgba(66, 103, 178, 0.05);
+          border-color: rgba(66, 103, 178, 0.3);
+        }
+      }
+    }
+  }
+
+  .login-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba($dark, 0.7);
+
+    a {
+      color: $primary;
+      font-weight: 500;
+      text-decoration: none;
+      transition: $transition;
+
+      &:hover {
+        color: darken($primary, 10%);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .register-card {
+    border-radius: 12px;
+  }
+
+  .card-header {
+    padding: 2rem 1.5rem;
+
+    .logo-container .logo-circle {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  .register-form {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
+}

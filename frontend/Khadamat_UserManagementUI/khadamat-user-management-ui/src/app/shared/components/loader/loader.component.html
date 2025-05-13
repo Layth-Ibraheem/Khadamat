@@ -1,0 +1,52 @@
+@if (isLoading) {
+
+  <div class="truck-loader-overlay">
+    <div class="road-container">
+      <!-- Animated background elements -->
+      <div class="landscape">
+        <div class="mountain"></div>
+        <div class="mountain-back"></div>
+        <div class="clouds"></div>
+        <div class="sun"></div>
+      </div>
+
+      <!-- Modern road with reflection -->
+      <div class="road">
+        <div class="lane-markings"></div>
+        <div class="road-reflection"></div>
+      </div>
+
+      <!-- Sleek animated truck -->
+      <div class="truck">
+        <div class="truck-body">
+          <div class="truck-cabin">
+            <div class="window"></div>
+            <div class="headlight"></div>
+          </div>
+          <div class="truck-bed">
+            <div class="cargo"></div>
+          </div>
+          <div class="exhaust"></div>
+        </div>
+        <div class="truck-wheels">
+          <div class="wheel">
+            <div class="wheel-detail"></div>
+          </div>
+          <div class="wheel">
+            <div class="wheel-detail"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modern loading text -->
+      <div class="loading-text">
+        <span class="text">{{ loadingText }}</span>
+        <div class="loading-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+}

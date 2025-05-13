@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog.Sinks.MSSqlServer" Version="8.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Khadamat_UserManagement.Application\Khadamat_UserManagement.Application.csproj" />
+    <ProjectReference Include="..\Khadamat_UserManagement.Contracts\Khadamat_UserManagement.Contracts.csproj" />
+    <ProjectReference Include="..\Khadamat_UserManagement.Infrastructure\Khadamat_UserManagement.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

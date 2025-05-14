@@ -86,6 +86,19 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             _educations = educations ?? new List<Education>();
         }
         #endregion
+        public void UpdatePersonalInfo(
+            string firstName,
+            string secondName,
+            string lastName,
+            string email,
+            string? nationalNo,
+            DateTime dateOfBirth,
+            string country,
+            string city,
+            string region)
+        {
+            PersonalDetails = new SellerPersonalDetails(firstName, secondName, lastName, email, nationalNo, dateOfBirth, country, city, region);
+        }
 
         #region Portfolio URLs
 

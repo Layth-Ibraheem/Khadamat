@@ -1,5 +1,4 @@
-﻿using Khadamat_SellerPortal.Application.OnlineSellers.Commands;
-using Khadamat_SellerPortal.Application.OnlineSellers.Common;
+﻿using Khadamat_SellerPortal.Application.OnlineSellers.Common;
 using Khadamat_SellerPortal.Contracts.OnlineSellers;
 using Khadamat_SellerPortal.Domain.Common.Entities;
 using Mapster;
@@ -16,6 +15,8 @@ using APIEducationDegree = Khadamat_SellerPortal.Contracts.OnlineSellers.Educati
 using ErrorOr;
 using System.Diagnostics;
 using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
+using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
+using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -40,15 +41,6 @@ namespace Khadamat_SellerPortal.API.Controllers
             }, Problem);
         }
 
-        [HttpGet("test")]
-        public IActionResult GetTest()
-        {
-            var filePaths = Directory.GetFiles("D:\\oud\\1");
-            var fs = filePaths.Select(Path.GetFileName).ToList();
-            return Ok(fs);
-        }
-
-        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> CreateOnlineSeller([FromBody] CreateOnlineSellerRequest request)
         {
@@ -84,6 +76,19 @@ namespace Khadamat_SellerPortal.API.Controllers
                 return Ok(onlineSellerResponse);
             }, Problem);
 
+        }
+
+        [HttpPut("{id:int}/update")]
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateSellerPersonalInfoRequest request)
+        {
+            var command = request.Adapt<UpdateOnlineSellerPersonalInfoCommand>();
+            command = command with { SellerId = id };
+            var updateRes = await _mediator.Send(command);
+            return updateRes.Match(onlineSeller =>
+            {
+                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
+                return Ok(onlineSellerResponse);
+            }, Problem);
         }
         private static ErrorOr<Success> ValidateEducationDegreeType(APIEducationDegree type)
         {

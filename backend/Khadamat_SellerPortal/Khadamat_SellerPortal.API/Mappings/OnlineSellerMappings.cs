@@ -11,6 +11,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Khadamat_SellerPortal.Domain.Common.Entities;
 using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
+using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
 
 
 namespace Khadamat_SellerPortal.API.Mappings
@@ -100,6 +101,19 @@ namespace Khadamat_SellerPortal.API.Mappings
                 .Map(dest => dest.Educations, src => src.educations)
                 .Map(dest => dest.PortfolioUrls, src => src.portfolioUrls)
                 .Map(dest => dest.SocialMediaLinks, src => src.socialMediaLinks);
+
+
+            config.NewConfig<UpdateSellerPersonalInfoRequest, UpdateOnlineSellerPersonalInfoCommand>()
+                .Map(dest => dest.FirstName, src => src.firstName)
+                .Map(dest => dest.SecondName, src => src.secondName)
+                .Map(dest => dest.LastName, src => src.lastName)
+                .Map(dest => dest.Email, src => src.email)
+                .Map(dest => dest.NationalNo, src => src.nationalNo)
+                .Map(dest => dest.DateOfBirth, src => src.dateOfBirth)
+                .Map(dest => dest.Country, src => src.country)
+                .Map(dest => dest.City, src => src.city)
+                .Map(dest => dest.Region, src => src.region)
+                .IgnoreNonMapped(true);
         }
 
         private static void ConfigMappingToResponse(TypeAdapterConfig config)

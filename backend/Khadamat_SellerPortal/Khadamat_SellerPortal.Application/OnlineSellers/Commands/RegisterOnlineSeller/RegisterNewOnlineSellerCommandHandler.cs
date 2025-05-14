@@ -9,15 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
+namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller
 {
     public class RegisterNewOnlineSellerCommandHandler : IRequestHandler<RegisterNewOnlineSellerCommand, ErrorOr<OnlineSeller>>
     {
         private readonly IOnlineSellerRepository _onlineSellerRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RegisterNewOnlineSellerCommandHandler(IOnlineSellerRepository onlineSellerRepository)
+        public RegisterNewOnlineSellerCommandHandler(IOnlineSellerRepository onlineSellerRepository, IUnitOfWork unitOfWork)
         {
             _onlineSellerRepository = onlineSellerRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<ErrorOr<OnlineSeller>> Handle(RegisterNewOnlineSellerCommand request, CancellationToken cancellationToken)
@@ -37,7 +39,7 @@ namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
             if (socialMediaResult.IsError) return socialMediaResult.FirstError;
 
             await _onlineSellerRepository.AddOnlineSeller(onlineSeller);
-            // TODO: create a unit of work to save changes to the database
+            await _unitOfWork.CommitChangesAsync();
             return onlineSeller;
         }
 

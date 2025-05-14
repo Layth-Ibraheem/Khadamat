@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
+namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller
 {
     public record RegisterNewOnlineSellerCommand(
         string FirstName,

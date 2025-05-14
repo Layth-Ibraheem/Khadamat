@@ -6,11 +6,11 @@ using APIPortfolioType = Khadamat_SellerPortal.Contracts.OnlineSellers.Portfolio
 using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.OnlineSellers.SocialMediaLinkType;
 using APIEducationDegree = Khadamat_SellerPortal.Contracts.OnlineSellers.EducationDegree;
 using Khadamat_SellerPortal.Contracts.OnlineSellers;
-using Khadamat_SellerPortal.Application.OnlineSellers.Commands;
 using Khadamat_SellerPortal.Application.OnlineSellers.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 using Khadamat_SellerPortal.Domain.Common.Entities;
 using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
+using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
 
 
 namespace Khadamat_SellerPortal.API.Mappings

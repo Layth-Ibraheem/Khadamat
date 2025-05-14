@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
+namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller
 {
     public class RegisterNewOnlineSellerCommandValidator : AbstractValidator<RegisterNewOnlineSellerCommand>
     {
@@ -25,7 +25,7 @@ namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
             RuleFor(x => x.LastName)
                 .NotEmpty().WithMessage("Last name is required")
                 .MaximumLength(20).WithMessage("Last name cannot exceed 20 characters");
-                //.Matches(@"^[a-zA-Z\s\-']+$").WithMessage("Last name contains invalid characters");
+            //.Matches(@"^[a-zA-Z\s\-']+$").WithMessage("Last name contains invalid characters");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email is required")
@@ -51,7 +51,7 @@ namespace Khadamat_SellerPortal.Application.OnlineSellers.Commands
 
             RuleFor(x => x.Region)
                 .MaximumLength(100).WithMessage("Region name cannot exceed 100 characters");
-                //.When(x => !string.IsNullOrEmpty(x.Region));
+            //.When(x => !string.IsNullOrEmpty(x.Region));
 
             RuleFor(x => x.WorkExperiences)
                 //.Must(we => we == null || we.Count <= 10).WithMessage("Cannot have more than 10 work experiences")

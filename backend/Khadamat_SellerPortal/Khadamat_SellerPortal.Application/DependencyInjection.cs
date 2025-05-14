@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Khadamat_SellerPortal.Application.Common.Behaviors;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Khadamat_SellerPortal.Application
             services.AddMediatR(options =>
             {
                 options.RegisterServicesFromAssemblyContaining(typeof(DependencyInjection));
+                options.AddOpenBehavior(typeof(ValidationBehavior<,>));
+
             });
             return services;
         }

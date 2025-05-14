@@ -1,4 +1,5 @@
-﻿using Khadamat_SellerPortal.Application.Common.Behaviors;
+﻿using FluentValidation;
+using Khadamat_SellerPortal.Application.Common.Behaviors;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace Khadamat_SellerPortal.Application
                 options.AddOpenBehavior(typeof(ValidationBehavior<,>));
 
             });
+            //services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
+            services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
             return services;
         }
     }

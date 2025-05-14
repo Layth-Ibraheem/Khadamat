@@ -10,7 +10,7 @@ namespace Khadamat_SellerPortal.Application.Common.Interfcaes
     public interface IOnlineSellerRepository
     {
         Task AddOnlineSeller(OnlineSeller onlineSeller);
-        Task UpdateOnlineSellerProfile(OnlineSeller onlineSeller);
+        void UpdateOnlineSellerProfile(OnlineSeller onlineSeller);
         Task<OnlineSeller?> GetOnlineSellerById(int id);
     }
 }

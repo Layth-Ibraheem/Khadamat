@@ -20,7 +20,6 @@ namespace Khadamat_SellerPortal.Infrastructure.OnlineSellers.Persistence
         public async Task AddOnlineSeller(OnlineSeller onlineSeller)
         {
             await _context.OnlineSellers.AddAsync(onlineSeller);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<OnlineSeller?> GetOnlineSellerById(int id)
@@ -35,12 +34,9 @@ namespace Khadamat_SellerPortal.Infrastructure.OnlineSellers.Persistence
                 .FirstOrDefaultAsync();
         }
 
-        public async Task UpdateOnlineSellerProfile(OnlineSeller onlineSeller)
+        public void UpdateOnlineSellerProfile(OnlineSeller onlineSeller)
         {
-            await Task.Run(() =>
-            {
-                _context.OnlineSellers.Update(onlineSeller);
-            });
+            _context.OnlineSellers.Update(onlineSeller);
         }
     }
 }

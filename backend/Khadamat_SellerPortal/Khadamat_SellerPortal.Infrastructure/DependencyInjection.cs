@@ -23,6 +23,8 @@ namespace Khadamat_SellerPortal.Infrastructure
             });
             services.AddScoped<IOnlineSellerRepository, OnlineSellerRepository>();
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<Khadamat_SellerPortalDbContext>());
+
             return services;
         }
     }

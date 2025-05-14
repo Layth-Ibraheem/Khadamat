@@ -1,4 +1,5 @@
-﻿using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
+﻿using Khadamat_SellerPortal.Application.Common.Interfcaes;
+using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Infrastructure.Common.Persistence
 {
-    public class Khadamat_SellerPortalDbContext : DbContext
+    public class Khadamat_SellerPortalDbContext : DbContext, IUnitOfWork
     {
         public DbSet<OnlineSeller> OnlineSellers { get; set; }
         public Khadamat_SellerPortalDbContext(DbContextOptions<Khadamat_SellerPortalDbContext> options) : base(options)
@@ -19,6 +20,11 @@ namespace Khadamat_SellerPortal.Infrastructure.Common.Persistence
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+        }
+
+        public async Task CommitChangesAsync()
+        {
+            await SaveChangesAsync();
         }
     }
 }

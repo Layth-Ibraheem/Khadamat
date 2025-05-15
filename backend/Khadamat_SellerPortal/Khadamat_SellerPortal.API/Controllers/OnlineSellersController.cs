@@ -14,6 +14,7 @@ using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfolioUrl;
+using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.DeletePortfolioUrl;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -95,6 +96,18 @@ namespace Khadamat_SellerPortal.API.Controllers
             var updateRes = await _mediator.Send(command);
 
             return updateRes.Match(onlineSeller =>
+            {
+                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
+                return Ok(onlineSellerResponse);
+            }, Problem);
+        }
+
+        [HttpDelete("{id:int}/deletePortfolio")]
+        public async Task<IActionResult> DeletePortfolioUrl(int id, [FromBody] DeletePortfolioURLRequest request)
+        {
+            var command = new DeletePortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()));
+            var deletingResult = await _mediator.Send(command);
+            return deletingResult.Match(onlineSeller =>
             {
                 var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
                 return Ok(onlineSellerResponse);

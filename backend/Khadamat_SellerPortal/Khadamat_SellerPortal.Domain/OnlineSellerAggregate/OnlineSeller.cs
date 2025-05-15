@@ -86,6 +86,8 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             _educations = educations ?? new List<Education>();
         }
         #endregion
+
+        #region Personal Info
         public void UpdatePersonalInfo(
             string firstName,
             string secondName,
@@ -99,6 +101,7 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
         {
             PersonalDetails = new SellerPersonalDetails(firstName, secondName, lastName, email, nationalNo, dateOfBirth, country, city, region);
         }
+        #endregion
 
         #region Portfolio URLs
 
@@ -136,18 +139,18 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the portfolio doesn't exist or would violate minimum requirements.
         /// </returns>
-        public ErrorOr<Success> DeletePortfolioUrl(int id)
+        public ErrorOr<Success> DeletePortfolioUrl(PortfolioUrlType type)
         {
             // Example of a business rule that must be in the aggregate level
             //if (_portfolioUrls.Count <= 1)
             //{
             //    return Error.Validation("OnlineSeller.MinPortfolios", "You only have one portfolio, at least one portfolio is required");
             //}
-            if (!_portfolioUrls.Any(p => p.Id == id))
+            if (!_portfolioUrls.Any(p => p.Type == type))
             {
                 return Error.Conflict("OnlineSeller.PortfolioDon`tExist", "This seller doesn`t have such portfolio");
             }
-            _portfolioUrls.Remove(_portfolioUrls.First(p => p.Id == id));
+            _portfolioUrls.Remove(_portfolioUrls.First(p => p.Type == type));
             return Result.Success;
         }
 

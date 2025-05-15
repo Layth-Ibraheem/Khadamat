@@ -1,10 +1,6 @@
-﻿using Khadamat_SellerPortal.Application.OnlineSellers.Common;
-using Khadamat_SellerPortal.Contracts.OnlineSellers;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+﻿using Khadamat_SellerPortal.Contracts.OnlineSellers;
 using Mapster;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlType;
 using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkType;
@@ -17,6 +13,7 @@ using System.Diagnostics;
 using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
+using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfolioUrl;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -78,12 +75,25 @@ namespace Khadamat_SellerPortal.API.Controllers
 
         }
 
-        [HttpPut("{id:int}/update")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateSellerPersonalInfoRequest request)
+        [HttpPut("{id:int}/updatePersonalInfo")]
+        public async Task<IActionResult> UpdatePersonalInfo(int id, [FromBody] UpdateSellerPersonalInfoRequest request)
         {
             var command = request.Adapt<UpdateOnlineSellerPersonalInfoCommand>();
             command = command with { SellerId = id };
             var updateRes = await _mediator.Send(command);
+            return updateRes.Match(onlineSeller =>
+            {
+                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
+                return Ok(onlineSellerResponse);
+            }, Problem);
+        }
+
+        [HttpPut("{id:int}/updatePortfolioUrl")]
+        public async Task<IActionResult> UpdatePortfolioUrl(int id, [FromBody] UpdatePortfolioUrlRequest request)
+        {
+            var command = new UpdatePortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
+            var updateRes = await _mediator.Send(command);
+
             return updateRes.Match(onlineSeller =>
             {
                 var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();

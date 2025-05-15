@@ -24,7 +24,7 @@ namespace Khadamat_SellerPortal.Domain.Common.Entities
         /// <summary>
         /// Personal website or custom portfolio.
         /// </summary>
-        public static readonly PortfolioUrlType PersoanlWebsite = new PortfolioUrlType("PersoanlWebsite", 1);
+        public static readonly PortfolioUrlType PersonalWebsite = new PortfolioUrlType("PersonalWebsite", 1);
 
         /// <summary>
         /// Khadamat platform portfolio (requires khadamat.com domain).

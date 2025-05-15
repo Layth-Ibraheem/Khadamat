@@ -11,7 +11,7 @@ namespace Khadamat_SellerPortal.Contracts.OnlineSellers
     public enum PortfolioUrlType
     {
         Git = 0,
-        PersoanlWebsite = 1,
+        PersonalWebsite = 1,
         KhadamatPortfolio = 2
     }
 }

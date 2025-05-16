@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record SocialMediaLinkResponse(int id, string link, string type);
+    public record SocialMediaLinkResponse(int Id, string Link, string Type);
 }

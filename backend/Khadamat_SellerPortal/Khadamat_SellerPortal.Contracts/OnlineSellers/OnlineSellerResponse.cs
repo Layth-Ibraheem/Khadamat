@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
     public record OnlineSellerResponse(
-        int id,
-        string firstName,
-        string secondName,
-        string lastName,
-        string email,
-        string nationalNo,
-        DateTime dateOfBirth,
-        string country,
-        string city,
-        string region,
-        List<PortfolioUrlResponse> portfolioUrls,
-        List<SocialMediaLinkResponse> socialMediaLinks,
-        List<WorkExperienceResponse> workExperiences,
-        List<EducationResponse> educations);
+        int Id,
+        string FirstName,
+        string SecondName,
+        string LastName,
+        string Email,
+        string NationalNo,
+        DateTime DateOfBirth,
+        string Country,
+        string City,
+        string Region,
+        List<PortfolioUrlResponse> PortfolioUrls,
+        List<SocialMediaLinkResponse> SocialMediaLinks,
+        List<WorkExperienceResponse> WorkExperiences,
+        List<EducationResponse> Educations);
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record CertificateResponse(int id, string filePath, string description);
+    public record CertificateResponse(int Id, string FilePath, string Description);
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record AddSocialMediaLink(string link, SocialMediaLinkType type);
+    public record AddSocialMediaLink(string Link, SocialMediaLinkType Type);
 }

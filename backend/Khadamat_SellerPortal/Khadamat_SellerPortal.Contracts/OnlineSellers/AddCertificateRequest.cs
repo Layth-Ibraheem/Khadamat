@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record AddCertificateRequest(string filePath, string description);
+    public record AddCertificateRequest(string FilePath, string Description);
 }

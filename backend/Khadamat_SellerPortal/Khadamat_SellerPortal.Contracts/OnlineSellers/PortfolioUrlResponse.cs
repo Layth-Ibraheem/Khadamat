@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record PortfolioUrlResponse(int id, string Url, string type);
+    public record PortfolioUrlResponse(int Id, string Url, string Type);
 }

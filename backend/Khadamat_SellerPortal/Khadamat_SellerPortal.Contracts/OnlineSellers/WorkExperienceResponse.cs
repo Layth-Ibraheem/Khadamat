@@ -6,5 +6,13 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record WorkExperienceResponse(int id, string companyName, string position, string field, DateTime start, DateTime? end, List<CertificateResponse> certificates, bool untilNow);
+    public record WorkExperienceResponse(
+        int Id,
+        string CompanyName,
+        string Position,
+        string Field,
+        DateTime Start,
+        DateTime? End,
+        List<CertificateResponse> Certificates,
+        bool UntilNow);
 }

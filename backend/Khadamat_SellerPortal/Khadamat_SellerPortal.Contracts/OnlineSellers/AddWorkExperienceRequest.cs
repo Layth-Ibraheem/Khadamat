@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record AddWorkExperienceRequest(string companyName, DateTime start, DateTime? end, bool untilNow, string position, string field, List<AddCertificateRequest> certificates);
+    public record AddWorkExperienceRequest(string CompanyName, DateTime Start, DateTime? End, bool UntilNow, string Position, string Field, List<AddCertificateRequest> Certificates);
 }

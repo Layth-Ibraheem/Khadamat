@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
     public record UpdateSellerPersonalInfoRequest(
-        string firstName,
-        string secondName,
-        string lastName,
-        string email,
-        string? nationalNo,
-        DateTime dateOfBirth,
-        string country,
-        string city,
-        string region);
+        string FirstName,
+        string SecondName,
+        string LastName,
+        string Email,
+        string? NationalNo,
+        DateTime DateOfBirth,
+        string Country,
+        string City,
+        string Region);
 }

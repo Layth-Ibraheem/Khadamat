@@ -6,5 +6,13 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Contracts.OnlineSellers
 {
-    public record EducationResponse(int id, string Institution, string fieldOfStudy, string degree, DateTime start, DateTime? end, CertificateResponse certificate, bool isGraduated);
+    public record EducationResponse(
+        int Id,
+        string Institution,
+        string FieldOfStudy,
+        string Degree,
+        DateTime Start,
+        DateTime? End,
+        CertificateResponse Certificate,
+        bool IsGraduated);
 }

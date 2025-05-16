@@ -15,6 +15,7 @@ using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSel
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfolioUrl;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.DeletePortfolioUrl;
+using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.AddPortfolioUrl;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -42,25 +43,25 @@ namespace Khadamat_SellerPortal.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> CreateOnlineSeller([FromBody] CreateOnlineSellerRequest request)
         {
-            foreach (var education in request.educations)
+            foreach (var education in request.Educations)
             {
-                var res = ValidateEducationDegreeType(education.degree);
+                var res = ValidateEducationDegreeType(education.Degree);
                 if (res.IsError)
                 {
                     return Problem(res.FirstError);
                 }
             }
-            foreach (var portfolioUrl in request.portfolioUrls)
+            foreach (var portfolioUrl in request.PortfolioUrls)
             {
-                var res = ValidatePortfolioUrlType(portfolioUrl.type);
+                var res = ValidatePortfolioUrlType(portfolioUrl.Type);
                 if (res.IsError)
                 {
                     return Problem(res.FirstError);
                 }
             }
-            foreach (var socialMediaLink in request.socialMediaLinks)
+            foreach (var socialMediaLink in request.SocialMediaLinks)
             {
-                var res = ValidateSocialMediaLinkType(socialMediaLink.type);
+                var res = ValidateSocialMediaLinkType(socialMediaLink.Type);
                 if (res.IsError)
                 {
                     return Problem(res.FirstError);
@@ -108,6 +109,18 @@ namespace Khadamat_SellerPortal.API.Controllers
             var command = new DeletePortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()));
             var deletingResult = await _mediator.Send(command);
             return deletingResult.Match(onlineSeller =>
+            {
+                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
+                return Ok(onlineSellerResponse);
+            }, Problem);
+        }
+
+        [HttpPost("{id:int}/addPortfolioUrl")]
+        public async Task<IActionResult> AddPortfolioUrl(int id, [FromBody] AddPortfolioUrlRequest request)
+        {
+            var command = new AddPortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
+            var result = await _mediator.Send(command);
+            return result.Match(onlineSeller =>
             {
                 var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
                 return Ok(onlineSellerResponse);

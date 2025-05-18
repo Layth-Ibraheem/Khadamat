@@ -10,12 +10,13 @@ using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.OnlineSellers.Soc
 using APIEducationDegree = Khadamat_SellerPortal.Contracts.OnlineSellers.EducationDegree;
 using ErrorOr;
 using System.Diagnostics;
-using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
-using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfolioUrl;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.DeletePortfolioUrl;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.AddPortfolioUrl;
+using Khadamat_SellerPortal.Application.Sellers.Commands.UpdateOnlineSellerPersonalInfo;
+using Khadamat_SellerPortal.Application.Sellers.Queries.FetchSeller;
+using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -80,7 +81,7 @@ namespace Khadamat_SellerPortal.API.Controllers
         [HttpPut("{id:int}/updatePersonalInfo")]
         public async Task<IActionResult> UpdatePersonalInfo(int id, [FromBody] UpdateSellerPersonalInfoRequest request)
         {
-            var command = request.Adapt<UpdateOnlineSellerPersonalInfoCommand>();
+            var command = request.Adapt<UpdateSellerPersonalInfoCommand>();
             command = command with { SellerId = id };
             var updateRes = await _mediator.Send(command);
             return updateRes.Match(onlineSeller =>

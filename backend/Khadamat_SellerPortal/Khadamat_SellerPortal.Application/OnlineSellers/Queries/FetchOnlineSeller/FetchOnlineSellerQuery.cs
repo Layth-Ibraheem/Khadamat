@@ -9,5 +9,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller
 {
-    public record FetchOnlineSellerQuery(int id) : IRequest<ErrorOr<OnlineSeller?>>;
+    public record FetchOnlineSellerQuery(int Id) : IRequest<ErrorOr<OnlineSeller?>>;
 }

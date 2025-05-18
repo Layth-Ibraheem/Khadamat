@@ -7,7 +7,7 @@ namespace Khadamat_SellerPortal.Application.Common.EntitiesValidators
     {
         public PortfolioUrlDtoValidator()
         {
-            RuleFor(x => x.Type).IsInEnum().WithMessage("Invalid portfolio URL type");
+            //RuleFor(x => x.Type).IsInEnum().WithMessage("Invalid portfolio URL type");
 
             RuleFor(x => x.Url)
                 .NotEmpty().WithMessage("URL is required")

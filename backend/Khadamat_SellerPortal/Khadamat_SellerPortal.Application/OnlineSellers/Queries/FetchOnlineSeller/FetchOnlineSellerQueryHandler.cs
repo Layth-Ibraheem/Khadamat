@@ -13,14 +13,16 @@ namespace Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSel
     public class FetchOnlineSellerQueryHandler : IRequestHandler<FetchOnlineSellerQuery, ErrorOr<OnlineSeller?>>
     {
         private readonly IOnlineSellerRepository _onlineSellerRepository;
+
         public FetchOnlineSellerQueryHandler(IOnlineSellerRepository onlineSellerRepository)
         {
             _onlineSellerRepository = onlineSellerRepository;
         }
+
         public async Task<ErrorOr<OnlineSeller?>> Handle(FetchOnlineSellerQuery request, CancellationToken cancellationToken)
         {
-            var OS = await _onlineSellerRepository.GetOnlineSellerById(request.id);
-            return OS;
+            var onlineSeller = await _onlineSellerRepository.GetOnlineSellerById(request.Id);
+            return onlineSeller;
         }
     }
 }

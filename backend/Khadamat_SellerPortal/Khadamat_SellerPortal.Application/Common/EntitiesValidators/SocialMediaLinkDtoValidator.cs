@@ -7,7 +7,7 @@ namespace Khadamat_SellerPortal.Application.Common.EntitiesValidators
     {
         public SocialMediaLinkDtoValidator()
         {
-            RuleFor(x => x.Type).IsInEnum().WithMessage("Invalid social media type");
+            //RuleFor(x => x.Type).IsInEnum().WithMessage("Invalid social media type");
 
             RuleFor(x => x.Link)
                 .NotEmpty().WithMessage("Link is required")

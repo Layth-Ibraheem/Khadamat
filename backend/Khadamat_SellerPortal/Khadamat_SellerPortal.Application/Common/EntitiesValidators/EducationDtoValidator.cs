@@ -15,7 +15,7 @@ namespace Khadamat_SellerPortal.Application.Common.EntitiesValidators
                 .NotEmpty().WithMessage("Field of study is required")
                 .MaximumLength(150).WithMessage("Field of study cannot exceed 150 characters");
 
-            RuleFor(x => x.Degree).IsInEnum().WithMessage("Invalid education degree");
+            //RuleFor(x => x.Degree).IsInEnum().WithMessage("Invalid education degree");
 
             RuleFor(x => x.Start)
                 .NotEmpty().WithMessage("Start date is required")

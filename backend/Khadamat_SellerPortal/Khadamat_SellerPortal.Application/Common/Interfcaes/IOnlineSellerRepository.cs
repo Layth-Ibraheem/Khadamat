@@ -1,4 +1,5 @@
 ﻿using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
+using Khadamat_SellerPortal.Domain.SellerAggregate;
 using System;
 using System.Collections.Generic;
 using System.Linq;

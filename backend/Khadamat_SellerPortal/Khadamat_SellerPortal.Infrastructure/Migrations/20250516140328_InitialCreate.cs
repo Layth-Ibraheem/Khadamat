@@ -12,7 +12,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "OnlineSellers",
+                name: "Sellers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -21,7 +21,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     SecondName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    NationalNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    NationalNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -29,7 +29,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OnlineSellers", x => x.Id);
+                    table.PrimaryKey("PK_Sellers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,9 +50,43 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Educations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Educations_OnlineSellers_SellerId",
+                        name: "FK_Educations_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "OnlineSellers",
+                        principalTable: "Sellers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OfflineSellers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OfflineSellers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OfflineSellers_Sellers_Id",
+                        column: x => x.Id,
+                        principalTable: "Sellers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OnlineSellers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OnlineSellers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OnlineSellers_Sellers_Id",
+                        column: x => x.Id,
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -71,9 +105,9 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_PortfolioUrls", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PortfolioUrls_OnlineSellers_SellerId",
+                        name: "FK_PortfolioUrls_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "OnlineSellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -92,9 +126,9 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_SocialMediaLinks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SocialMediaLinks_OnlineSellers_SellerId",
+                        name: "FK_SocialMediaLinks_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "OnlineSellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -117,9 +151,9 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_WorkExperiences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorkExperiences_OnlineSellers_SellerId",
+                        name: "FK_WorkExperiences_Sellers_SellerId",
                         column: x => x.SellerId,
-                        principalTable: "OnlineSellers",
+                        principalTable: "Sellers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -192,6 +226,12 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 name: "Certificates");
 
             migrationBuilder.DropTable(
+                name: "OfflineSellers");
+
+            migrationBuilder.DropTable(
+                name: "OnlineSellers");
+
+            migrationBuilder.DropTable(
                 name: "PortfolioUrls");
 
             migrationBuilder.DropTable(
@@ -204,7 +244,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                 name: "WorkExperiences");
 
             migrationBuilder.DropTable(
-                name: "OnlineSellers");
+                name: "Sellers");
         }
     }
 }

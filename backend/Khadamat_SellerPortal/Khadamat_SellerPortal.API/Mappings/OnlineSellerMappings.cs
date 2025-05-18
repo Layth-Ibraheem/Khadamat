@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Khadamat_SellerPortal.Domain.Common.Entities;
 using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
-using Khadamat_SellerPortal.Application.OnlineSellers.Commands.UpdateOnlineSeller;
+using Khadamat_SellerPortal.Application.Sellers.Commands.UpdateOnlineSellerPersonalInfo;
 
 
 namespace Khadamat_SellerPortal.API.Mappings
@@ -103,7 +103,7 @@ namespace Khadamat_SellerPortal.API.Mappings
                 .Map(dest => dest.SocialMediaLinks, src => src.SocialMediaLinks);
 
 
-            config.NewConfig<UpdateSellerPersonalInfoRequest, UpdateOnlineSellerPersonalInfoCommand>()
+            config.NewConfig<UpdateSellerPersonalInfoRequest, UpdateSellerPersonalInfoCommand>()
                 .Map(dest => dest.FirstName, src => src.FirstName)
                 .Map(dest => dest.SecondName, src => src.SecondName)
                 .Map(dest => dest.LastName, src => src.LastName)

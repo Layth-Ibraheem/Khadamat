@@ -1,5 +1,4 @@
 ﻿using Khadamat_SellerPortal.Application.Common.Interfcaes;
-using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
 using Khadamat_SellerPortal.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -9,24 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Infrastructure.OnlineSellers.Persistence
+namespace Khadamat_SellerPortal.Infrastructure.Sellers.Persistence
 {
-    public class OnlineSellerRepository : IOnlineSellerRepository
+    public class SellerRepository : ISellerRepository
     {
         private readonly Khadamat_SellerPortalDbContext _context;
-        public OnlineSellerRepository(Khadamat_SellerPortalDbContext context)
+        public SellerRepository(Khadamat_SellerPortalDbContext context)
         {
             _context = context;
         }
-        public async Task AddOnlineSeller(OnlineSeller onlineSeller)
+        public async Task AddSeller(Seller seller)
         {
-            await _context.OnlineSellers.AddAsync(onlineSeller);
+            await _context.Sellers.AddAsync(seller);
         }
 
-        public async Task<OnlineSeller?> GetOnlineSellerById(int id)
+        public async Task<Seller?> GetSellerById(int id)
         {
-
-            return await _context.OnlineSellers.Where(o => o.Id == id)
+            return await _context.Sellers.Where(o => o.Id == id)
                 .Include(o => o.WorkExperiences)
                     .ThenInclude(w => w.Certificates)
                 .Include(o => o.Educations)
@@ -36,10 +34,10 @@ namespace Khadamat_SellerPortal.Infrastructure.OnlineSellers.Persistence
                 .FirstOrDefaultAsync();
         }
 
-
-        public void UpdateOnlineSellerProfile(OnlineSeller onlineSeller)
+        public async Task UpdateSeller(Seller seller)
         {
-            _context.OnlineSellers.Update(onlineSeller);
+            await Task.CompletedTask;
+            _context.Sellers.Update(seller);
         }
     }
 }

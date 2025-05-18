@@ -1,17 +1,12 @@
 ﻿using ErrorOr;
 using Khadamat_SellerPortal.Application.Common.Interfcaes;
-using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
-using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
+using Khadamat_SellerPortal.Application.Sellers.Queries.FetchSeller;
+using Khadamat_SellerPortal.Domain.SellerAggregate;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Application.PortfolioURLs.Commands.AddPortfolioUrl
 {
-    public class AddPortfolioUrlCommandHandler : IRequestHandler<AddPortfolioUrlCommand, ErrorOr<OnlineSeller>>
+    public class AddPortfolioUrlCommandHandler : IRequestHandler<AddPortfolioUrlCommand, ErrorOr<Seller>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ISender _mediator;
@@ -21,21 +16,21 @@ namespace Khadamat_SellerPortal.Application.PortfolioURLs.Commands.AddPortfolioU
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<ErrorOr<OnlineSeller>> Handle(AddPortfolioUrlCommand request, CancellationToken cancellationToken)
+        public async Task<ErrorOr<Seller>> Handle(AddPortfolioUrlCommand request, CancellationToken cancellationToken)
         {
-            var fetchOnlineSellerResult = await _mediator.Send(new FetchOnlineSellerQuery(request.SellerId));
-            if (fetchOnlineSellerResult.IsError)
+            var fetchSellerResult = await _mediator.Send(new FetchSellerQuery(request.SellerId));
+            if (fetchSellerResult.IsError)
             {
-                return fetchOnlineSellerResult.FirstError;
+                return fetchSellerResult.FirstError;
             }
-            var onlineSeller = fetchOnlineSellerResult.Value;
-            var addingPortfolioRes = onlineSeller.AddPortfolioUrl(request.Url, request.Type);
+            var seller = fetchSellerResult.Value;
+            var addingPortfolioRes = seller.AddPortfolioUrl(request.Url, request.Type);
             if (addingPortfolioRes.IsError)
             {
                 return addingPortfolioRes.FirstError;
             }
             await _unitOfWork.CommitChangesAsync();
-            return onlineSeller;
+            return seller;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Khadamat_SellerPortal.Infrastructure.Common;
 using Khadamat_SellerPortal.Infrastructure.Common.Persistence;
 using Khadamat_SellerPortal.Infrastructure.OnlineSellers.Persistence;
+using Khadamat_SellerPortal.Infrastructure.Sellers.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ namespace Khadamat_SellerPortal.Infrastructure
             {
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddScoped<ISellerRepository, SellerRepository>();
             services.AddScoped<IOnlineSellerRepository, OnlineSellerRepository>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<Khadamat_SellerPortalDbContext>());

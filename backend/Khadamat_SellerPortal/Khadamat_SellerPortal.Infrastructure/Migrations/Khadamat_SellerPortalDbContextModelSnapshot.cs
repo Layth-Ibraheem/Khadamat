@@ -176,7 +176,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("WorkExperiences", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,6 +185,22 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.HasKey("Id");
+
+                    b.ToTable("Sellers");
+
+                    b.UseTptMappingStrategy();
+                });
+
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OfflineSellerAggregate.OfflineSeller", b =>
+                {
+                    b.HasBaseType("Khadamat_SellerPortal.Domain.SellerAggregate.Seller");
+
+                    b.ToTable("OfflineSellers", (string)null);
+                });
+
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", b =>
+                {
+                    b.HasBaseType("Khadamat_SellerPortal.Domain.SellerAggregate.Seller");
 
                     b.ToTable("OnlineSellers", (string)null);
                 });
@@ -204,7 +220,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Education", b =>
                 {
-                    b.HasOne("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("Educations")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -236,7 +252,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrl", b =>
                 {
-                    b.HasOne("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("PortfolioUrls")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -245,7 +261,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLink", b =>
                 {
-                    b.HasOne("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("SocialMediaLinks")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -254,7 +270,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
 
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperience", b =>
                 {
-                    b.HasOne("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("WorkExperiences")
                         .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -289,11 +305,11 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", b =>
                 {
                     b.OwnsOne("Khadamat_SellerPortal.Domain.Common.ValueObjects.SellerPersonalDetails", "PersonalDetails", b1 =>
                         {
-                            b1.Property<int>("OnlineSellerId")
+                            b1.Property<int>("SellerId")
                                 .HasColumnType("int");
 
                             b1.Property<DateTime>("DateOfBirth")
@@ -330,16 +346,16 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                                 .HasColumnType("nvarchar(20)")
                                 .HasColumnName("SecondName");
 
-                            b1.HasKey("OnlineSellerId");
+                            b1.HasKey("SellerId");
 
-                            b1.ToTable("OnlineSellers");
+                            b1.ToTable("Sellers");
 
                             b1.WithOwner()
-                                .HasForeignKey("OnlineSellerId");
+                                .HasForeignKey("SellerId");
 
                             b1.OwnsOne("Khadamat_SellerPortal.Domain.Common.ValueObjects.SellerAddress", "Address", b2 =>
                                 {
-                                    b2.Property<int>("SellerPersonalDetailsOnlineSellerId")
+                                    b2.Property<int>("SellerPersonalDetailsSellerId")
                                         .HasColumnType("int");
 
                                     b2.Property<string>("City")
@@ -360,19 +376,38 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                                         .HasColumnType("nvarchar(100)")
                                         .HasColumnName("Region");
 
-                                    b2.HasKey("SellerPersonalDetailsOnlineSellerId");
+                                    b2.HasKey("SellerPersonalDetailsSellerId");
 
-                                    b2.ToTable("OnlineSellers");
+                                    b2.ToTable("Sellers");
 
                                     b2.WithOwner()
-                                        .HasForeignKey("SellerPersonalDetailsOnlineSellerId");
+                                        .HasForeignKey("SellerPersonalDetailsSellerId");
                                 });
 
                             b1.Navigation("Address")
                                 .IsRequired();
                         });
 
-                    b.Navigation("PersonalDetails");
+                    b.Navigation("PersonalDetails")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OfflineSellerAggregate.OfflineSeller", b =>
+                {
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
+                        .WithOne()
+                        .HasForeignKey("Khadamat_SellerPortal.Domain.OfflineSellerAggregate.OfflineSeller", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", b =>
+                {
+                    b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
+                        .WithOne()
+                        .HasForeignKey("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Education", b =>
@@ -385,7 +420,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.Navigation("Certificates");
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.OnlineSellerAggregate.OnlineSeller", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", b =>
                 {
                     b.Navigation("Educations");
 

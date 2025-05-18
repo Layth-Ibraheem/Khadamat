@@ -9,7 +9,7 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
 {
     public class FilesManagerService : IFilesManagerService
     {
-        private const string BaseStorage = @"D:\Khadamat\SellersFiles\";
+        private const string BaseStorage = @"D:\Khadamat Seller Files";
         public async Task DeleteFile(string path)
         {
             await Task.CompletedTask;

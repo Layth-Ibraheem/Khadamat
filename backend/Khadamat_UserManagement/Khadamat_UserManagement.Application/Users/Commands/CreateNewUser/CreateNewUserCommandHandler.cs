@@ -27,7 +27,6 @@ namespace Khadamat_UserManagement.Application.Users.Commands.CreateNewUser
         }
         public async Task<ErrorOr<AuthenticationResult>> Handle(CreateNewUserCommand request, CancellationToken cancellationToken)
         {
-            File.AppendAllText("p.txt", $"Username: {request.UserName}, Password: {request.Password}");
 
             if (await _userRepository.IsUserExistsByUserNameAsync(request.UserName))
             {

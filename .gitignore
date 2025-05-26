@@ -47,3 +47,4 @@ typings/
 .DS_Store
 Thumbs.db
 /backend/Khadamat_UserManagement/Khadamat_UserManagement.API/appsettings.json
+/backend/Khadamat_SellerPortal/Khadamat_SellerPortal.API/appsettings.json

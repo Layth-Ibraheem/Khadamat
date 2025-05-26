@@ -5,6 +5,9 @@
 *.suo
 .vs/
 *.sln.docstates
+# App settings
+appsettings.json
+**/appsettings.json
 
 # Angular and Node.js (recursive)
 /tmp

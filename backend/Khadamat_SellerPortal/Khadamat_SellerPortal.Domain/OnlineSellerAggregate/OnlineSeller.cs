@@ -305,6 +305,17 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             }
             return education.UpdateCertificate(filePath, description);
         }
+
+        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
+        {
+            if (!_socialMediaLinks.Any(l => l.Type == type))
+                return Error.NotFound("OnlineSeller.SocialLinkNotFound",
+                    "No social media link found with this ID");
+
+            var toRemove = _socialMediaLinks.First(l => l.Type == type);
+            _socialMediaLinks.Remove(toRemove);
+            return Result.Success;
+        }
         #endregion
 
         private OnlineSeller()

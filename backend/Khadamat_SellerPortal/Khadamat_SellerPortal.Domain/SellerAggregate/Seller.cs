@@ -117,9 +117,9 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         public abstract ErrorOr<Success> AddPortfolioUrl(string url, PortfolioUrlType type);
 
         /// <summary>
-        /// Deletes a portfolio URL by its ID.
+        /// Deletes a portfolio URL by its type.
         /// </summary>
-        /// <param name="id">The ID of the portfolio URL to delete.</param>
+        /// <param name="type">The type of the portfolio URL to delete.</param>
         /// <returns>
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the portfolio doesn't exist or would violate minimum requirements.
@@ -153,9 +153,19 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         public abstract ErrorOr<Success> AddSocialMediaLink(SocialMediaLinkType type, string link);
 
         /// <summary>
-        /// Deletes a social media link by its ID.
+        /// Deletes a social media link by its type.
         /// </summary>
-        /// <param name="id">The ID of the social media link to delete.</param>
+        /// <param name="type">The type of the social media link to delete.</param>
+        /// <returns>
+        /// <see cref="Success"/> if the operation was successful,
+        /// or an error if the link doesn't exist.
+        /// </returns>
+        public abstract ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type);
+
+        /// <summary>
+        /// Deletes a social media link by its type.
+        /// </summary>
+        /// <param name="type">The type of the social media link to delete.</param>
         /// <returns>
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the link doesn't exist.

@@ -5,15 +5,13 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Contracts.OnlineSellers
+namespace Khadamat_SellerPortal.Contracts.PortfolioURLs
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum SocialMediaLinkType
+    public enum PortfolioUrlType
     {
-        Facebook = 0,
-        Instagram = 1,
-        X = 2,
-        Youtube = 3,
-        Linkedin = 4
+        Git = 0,
+        PersonalWebsite = 1,
+        KhadamatPortfolio = 2
     }
 }

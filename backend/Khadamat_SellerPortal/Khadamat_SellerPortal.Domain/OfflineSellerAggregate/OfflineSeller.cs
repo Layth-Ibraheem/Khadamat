@@ -98,6 +98,11 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
+        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
+        {
+            throw new NotImplementedException();
+        }
+
         public override ErrorOr<Success> DeleteWorkExperience(int id)
         {
             throw new NotImplementedException();

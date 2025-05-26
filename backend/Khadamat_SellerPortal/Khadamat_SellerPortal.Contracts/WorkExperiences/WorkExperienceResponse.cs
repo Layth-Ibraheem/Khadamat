@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Khadamat_SellerPortal.Contracts.Certificates;
 
-namespace Khadamat_SellerPortal.Contracts.OnlineSellers
+namespace Khadamat_SellerPortal.Contracts.WorkExperiences
 {
     public record WorkExperienceResponse(
         int Id,

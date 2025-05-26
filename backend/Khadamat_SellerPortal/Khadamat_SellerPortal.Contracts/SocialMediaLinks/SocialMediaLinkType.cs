@@ -5,16 +5,15 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Contracts.OnlineSellers
+namespace Khadamat_SellerPortal.Contracts.SocialMediaLinks
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum EducationDegree
+    public enum SocialMediaLinkType
     {
-        HighSchool = 0,
-        Bachelor = 1,
-        Master = 2,
-        PhD = 3,
-        Diploma = 4,
-        NotGraduated = 5
+        Facebook = 0,
+        Instagram = 1,
+        X = 2,
+        Youtube = 3,
+        Linkedin = 4
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlType;
 using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkType;
 using DomainEducationDegree = Khadamat_SellerPortal.Domain.Common.Entities.EducationDegree;
-using APIPortfolioType = Khadamat_SellerPortal.Contracts.OnlineSellers.PortfolioUrlType;
-using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.OnlineSellers.SocialMediaLinkType;
-using APIEducationDegree = Khadamat_SellerPortal.Contracts.OnlineSellers.EducationDegree;
+using APIPortfolioType = Khadamat_SellerPortal.Contracts.PortfolioURLs.PortfolioUrlType;
+using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.SocialMediaLinks.SocialMediaLinkType;
+using APIEducationDegree = Khadamat_SellerPortal.Contracts.Educations.EducationDegree;
 using ErrorOr;
 using System.Diagnostics;
 using Khadamat_SellerPortal.Application.OnlineSellers.Commands.RegisterOnlineSeller;
@@ -17,6 +17,7 @@ using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.AddPortfolioUrl;
 using Khadamat_SellerPortal.Application.Sellers.Commands.UpdateOnlineSellerPersonalInfo;
 using Khadamat_SellerPortal.Application.Sellers.Queries.FetchSeller;
 using Khadamat_SellerPortal.Application.OnlineSellers.Queries.FetchOnlineSeller;
+using Khadamat_SellerPortal.Contracts.Sellers;
 namespace Khadamat_SellerPortal.API.Controllers
 {
     [Route("[controller]")]
@@ -91,42 +92,6 @@ namespace Khadamat_SellerPortal.API.Controllers
             }, Problem);
         }
 
-        [HttpPut("{id:int}/updatePortfolioUrl")]
-        public async Task<IActionResult> UpdatePortfolioUrl(int id, [FromBody] UpdatePortfolioUrlRequest request)
-        {
-            var command = new UpdatePortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
-            var updateRes = await _mediator.Send(command);
-
-            return updateRes.Match(onlineSeller =>
-            {
-                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
-                return Ok(onlineSellerResponse);
-            }, Problem);
-        }
-
-        [HttpDelete("{id:int}/deletePortfolio")]
-        public async Task<IActionResult> DeletePortfolioUrl(int id, [FromBody] DeletePortfolioURLRequest request)
-        {
-            var command = new DeletePortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()));
-            var deletingResult = await _mediator.Send(command);
-            return deletingResult.Match(onlineSeller =>
-            {
-                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
-                return Ok(onlineSellerResponse);
-            }, Problem);
-        }
-
-        [HttpPost("{id:int}/addPortfolioUrl")]
-        public async Task<IActionResult> AddPortfolioUrl(int id, [FromBody] AddPortfolioUrlRequest request)
-        {
-            var command = new AddPortfolioUrlCommand(id, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
-            var result = await _mediator.Send(command);
-            return result.Match(onlineSeller =>
-            {
-                var onlineSellerResponse = onlineSeller.Adapt<OnlineSellerResponse>();
-                return Ok(onlineSellerResponse);
-            }, Problem);
-        }
         private static ErrorOr<Success> ValidateEducationDegreeType(APIEducationDegree type)
         {
             Debug.WriteLine(type.ToString());

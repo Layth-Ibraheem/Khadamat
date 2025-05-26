@@ -5,13 +5,16 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Khadamat_SellerPortal.Contracts.OnlineSellers
+namespace Khadamat_SellerPortal.Contracts.Educations
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
-    public enum PortfolioUrlType
+    public enum EducationDegree
     {
-        Git = 0,
-        PersonalWebsite = 1,
-        KhadamatPortfolio = 2
+        HighSchool = 0,
+        Bachelor = 1,
+        Master = 2,
+        PhD = 3,
+        Diploma = 4,
+        NotGraduated = 5
     }
 }

@@ -15,6 +15,7 @@ namespace Khadamat_UserManagement.API
                 .AddApplicationDependencies(builder.Configuration)
                 .AddInfrastructureDependencies(builder.Configuration);
 
+            builder.Services.AddProblemDetails();
 
             //Log.Logger = new LoggerConfiguration()
             //    .MinimumLevel.Information()
@@ -38,7 +39,7 @@ namespace Khadamat_UserManagement.API
 
 
             var app = builder.Build();
-
+            app.UseExceptionHandler();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

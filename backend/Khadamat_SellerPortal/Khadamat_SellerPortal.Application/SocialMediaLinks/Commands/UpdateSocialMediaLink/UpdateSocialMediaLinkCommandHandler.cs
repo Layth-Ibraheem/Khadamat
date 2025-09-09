@@ -36,7 +36,7 @@ namespace Khadamat_SellerPortal.Application.SocialMediaLinks.Commands.UpdateSoci
             {
                 return updateSocialMediaLinkResult.FirstError;
             }
-
+            await _unitOfWork.CommitChangesAsync();
             return seller;
         }
     }

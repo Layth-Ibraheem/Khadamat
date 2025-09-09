@@ -1,15 +1,31 @@
 ﻿using ErrorOr;
 using Khadamat_FileService.Application.Common.Interfaces;
+using Khadamat_FileService.Application.KhadamatFiles.Common;
 using Khadamat_FileService.Domain.FileAggregate;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace Khadamat_FileService.Infrastructure.KhadamatFiles
 {
     public class FilesManagerService : IFilesManagerService
     {
         private const string BaseStorage = @"D:\Khadamat Seller Files";
+
+        public Task CreateSellerFolderStructureAsync(string nationalNo)
+        {
+            var sellerFolder = Path.Combine(BaseStorage, nationalNo);
+            var workExperiencesFolder = Path.Combine(sellerFolder, "WorkExperiences");
+            var educationFolder = Path.Combine(sellerFolder, "Education");
+
+            Directory.CreateDirectory(workExperiencesFolder);
+            Directory.CreateDirectory(educationFolder);
+
+
+            return Task.CompletedTask;
+        }
+
         public async Task DeleteFile(string path)
         {
             await Task.CompletedTask;
@@ -43,7 +59,13 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
                 throw new FileNotFoundException("File not found", fullPath);
             }
 
-            var fileStream = new FileStream(fullPath, FileMode.Open, FileAccess.Read);
+            // Open the stream with sharing options that avoid file locking issues
+            var fileStream = new FileStream(
+                fullPath,
+                FileMode.Open,
+                FileAccess.Read,
+                FileShare.ReadWrite | FileShare.Delete);
+
             var contentType = GetContentType(Path.GetExtension(fullPath));
             var fileName = Path.GetFileName(fullPath);
 
@@ -91,7 +113,6 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
 
         public async Task<ErrorOr<(string storedFileName, string fullPath)>> UploadFile(
             IFormFile file,
-            string originalFileName,
             string nationalNo,
             KhadamatFileReferenceType fileType,
             IDictionary<string, string> metdata)
@@ -102,7 +123,7 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
                 {
                     throw new ArgumentException("File is empty or null", nameof(file));
                 }
-                var (storedFileName, fullPath) = GeneratePaths(nationalNo, fileType, metdata, originalFileName);
+                var (storedFileName, fullPath) = GeneratePaths(nationalNo, fileType, metdata, file.Name);
 
                 Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
@@ -119,6 +140,37 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
             {
                 return Error.Failure("CannotCreateFile", e.Message);
             }
+        }
+        public async Task<ErrorOr<UploadFileResult>> UploadEducationFile(Stream fileStream, string fileName, string nationalNo, string institution, string fieldOfStudy)
+        {
+            var fileExtension = Path.GetExtension(fileName);
+            var guid = Guid.NewGuid().ToString();
+            var storedFileName = $"{guid}{fileExtension}";
+            var relativePath = $@"{nationalNo}\Educations\{institution}-{fieldOfStudy}\Certificate-{guid}\{storedFileName}";
+            var fullPath = Path.Combine(BaseStorage, relativePath);
+
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
+
+                // Write safely (exclusive lock while writing)
+                using (var destinationStream = new FileStream(fullPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    await fileStream.CopyToAsync(destinationStream);
+                }
+
+
+                return new UploadFileResult(fullPath, storedFileName);
+            }
+            catch (Exception e)
+            {
+                return Error.Unexpected("File.Unexpected", e.Message);
+            }
+        }
+        
+        public Task<ErrorOr<UploadFileResult>> UploadWorkExperienceFile(Stream file, string fileName, string nationalNo, string companyName, string position)
+        {
+            throw new NotImplementedException();
         }
 
         private (string storedFileName, string fullPath) GeneratePaths(
@@ -156,25 +208,26 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
         {
             // You can expand this dictionary with more MIME types as needed
             var mimeTypes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-        {
-            {".txt", "text/plain"},
-            {".pdf", "application/pdf"},
-            {".doc", "application/vnd.ms-word"},
-            {".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
-            {".xls", "application/vnd.ms-excel"},
-            {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
-            {".png", "image/png"},
-            {".jpg", "image/jpeg"},
-            {".jpeg", "image/jpeg"},
-            {".gif", "image/gif"},
-            {".csv", "text/csv"},
-            {".zip", "application/zip"}
-        };
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"},
+                {".zip", "application/zip"}
+            };
 
             return mimeTypes.TryGetValue(fileExtension, out var mimeType)
                 ? mimeType
                 : "application/octet-stream";
         }
+
         //private string GetSafeFileName(string originalFileName)
         //{
         //    string safeName = "";

@@ -17,4 +17,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Educations\IntegrationEvents\" />
+    <Folder Include="WorkExperiences\Commands\DeleteWorkExperience\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Khadamat_SharedKernal">
+      <HintPath>..\..\Khadamat_SharedKernal\Khadamat_SharedKernal\bin\Debug\net8.0\Khadamat_SharedKernal.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

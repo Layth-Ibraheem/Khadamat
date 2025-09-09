@@ -16,6 +16,8 @@ namespace Khadamat_FileService.Api
             builder.Services.AddSwaggerGen();
             builder.Services.AddInfrastructureDependencies(builder.Configuration)
                 .AddApplicationDependencies();
+            builder.Services.AddHttpContextAccessor();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,7 +30,7 @@ namespace Khadamat_FileService.Api
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
+            app.UseInfrastructureMiddleware();
 
             app.MapControllers();
 

@@ -44,6 +44,9 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles.Persistence
                 .HasMaxLength(1500)
                 .IsRequired();
 
+            builder.Property(f => f.KhadamatFileType)
+                .HasConversion(i => i.Value, o => KhadamatFileReferenceType.FromValue(o)).IsRequired();
+
         }
     }
 }

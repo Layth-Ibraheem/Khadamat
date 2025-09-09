@@ -12,6 +12,6 @@ namespace Khadamat_SellerPortal.Application.Common.Interfcaes
         Task AddSeller(Seller seller);
         Task UpdateSeller(Seller seller);
         Task<Seller?> GetSellerById(int id);
-
+        Task<Seller?> GetSellerByNationalNo(string nationalNo);
     }
 }

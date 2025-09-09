@@ -2,12 +2,14 @@
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.DeletePortfolioUrl;
 using Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfolioUrl;
 using Khadamat_SellerPortal.Contracts.PortfolioURLs;
+using Khadamat_SellerPortal.Contracts.Sellers;
+using Khadamat_SellerPortal.Domain.SellerAggregate;
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using APIPortfolioType = Khadamat_SellerPortal.Contracts.PortfolioURLs.PortfolioUrlType;
-using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlType;
+using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity.PortfolioUrlType;
 
 namespace Khadamat_SellerPortal.API.Controllers
 {
@@ -25,9 +27,10 @@ namespace Khadamat_SellerPortal.API.Controllers
         {
             var command = new AddPortfolioUrlCommand(sellerId, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
             var result = await _mediator.Send(command);
-            return result.Match(onlineSeller =>
+            return result.Match(seller =>
             {
-                return Ok();
+                var sellerResponse = seller.Adapt<SellerResponse>();
+                return Ok(sellerResponse);
             }, Problem);
         }
 
@@ -37,9 +40,10 @@ namespace Khadamat_SellerPortal.API.Controllers
             var command = new UpdatePortfolioUrlCommand(sellerId, DomainPortfolioType.FromName(request.Type.ToString()), request.Url);
             var updateRes = await _mediator.Send(command);
 
-            return updateRes.Match(onlineSeller =>
+            return updateRes.Match(seller =>
             {
-                return Ok();
+                var sellerResponse = seller.Adapt<SellerResponse>();
+                return Ok(sellerResponse);
             }, Problem);
         }
 

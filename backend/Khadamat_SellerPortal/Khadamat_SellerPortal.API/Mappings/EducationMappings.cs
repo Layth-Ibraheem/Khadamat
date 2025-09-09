@@ -1,9 +1,10 @@
 ﻿using Mapster;
-using DomainEducationDegree = Khadamat_SellerPortal.Domain.Common.Entities.EducationDegree;
+using DomainEducationDegree = Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.EducationDegree;
 using APIEducationDegree = Khadamat_SellerPortal.Contracts.Educations.EducationDegree;
 using Khadamat_SellerPortal.Application.OnlineSellers.Common;
 using Khadamat_SellerPortal.Contracts.Educations;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Application.Educations.Commands.AddEducation;
+using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
 
 namespace Khadamat_SellerPortal.API.Mappings
 {
@@ -24,8 +25,6 @@ namespace Khadamat_SellerPortal.API.Mappings
                 .Map(dest => dest.IsGraduated, src => src.IsGraduated)
                 .Map(dest => dest.EducationCertificate, src => src.Certificate);
 
-
-            // Education to EducationResponse
             config.NewConfig<Education, EducationResponse>()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.Institution, src => src.Institution)
@@ -35,6 +34,8 @@ namespace Khadamat_SellerPortal.API.Mappings
                 .Map(dest => dest.End, src => src.AttendancePeriod.End)
                 .Map(dest => dest.IsGraduated, src => src.IsGraduated)
                 .Map(dest => dest.Certificate, src => src.EducationCertificate);
+
+            config.NewConfig<AddEducationRequest, AddEducationCommand>();
 
         }
     }

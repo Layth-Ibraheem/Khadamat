@@ -1,7 +1,11 @@
 ﻿using ErrorOr;
 using Khadamat_SellerPortal.Domain.Common;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Khadamat_SellerPortal.Domain.Common.ValueObjects;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,7 +87,7 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
 
         protected Seller()
         {
-            
+
         }
         #endregion
 
@@ -226,8 +230,23 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the work experience doesn't exist or dates are invalid.
         /// </returns>
-        public abstract ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime endDate, bool untilNow);
+        public abstract ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow);
 
+        /// <summary>
+        /// Updates an existing work experience by id.
+        /// </summary>
+        /// <param name="workExperienceId">The id of the work experience to update.</param>
+        /// <param name="companyName">The name of the company to update.</param>
+        /// <param name="position">The new job position.</param>
+        /// <param name="field">The new field of work.</param>
+        /// <param name="startDate">The new start date.</param>
+        /// <param name="endDate">The new end date.</param>
+        /// <param name="untilNow">Whether the employment continues to the present.</param>
+        /// <returns>
+        /// <see cref="Success"/> if the operation was successful,
+        /// or an error if the work experience doesn't exist or dates are invalid.
+        /// </returns>
+        public abstract ErrorOr<Success> UpdateWorkExperience(int workExperienceId, string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow);
 
         /// <summary>
         /// Calculates the duration of a specific work experience.
@@ -354,7 +373,24 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the work experience or certificate doesn't exist.
         /// </returns>
-        public abstract ErrorOr<Success> UpdateCertificate(int workExperienceId, int certificateId, string filePath, string description);
+        public abstract ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description, int fileId);
+
+        /// <summary>
+        /// Updates a certification for a work experience.
+        /// </summary>
+        /// <param name="certificateId">The ID of the certificate to update.</param>
+        /// <param name="filePath">The new path to the certificate file.</param>
+        /// <param name="description">The new description of the certification.</param>
+        /// <returns>
+        /// <see cref="Success"/> if the operation was successful,
+        /// or an error if the work experience or certificate doesn't exist.
+        /// </returns>
+        public abstract ErrorOr<Success> UpdateWorkExperienceCertificateByCompanyNameAndPosition(
+            string companyName,
+            string position,
+            int certificateId,
+            string filePath,
+            string description);
         #endregion
 
 
@@ -402,7 +438,7 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// or an error if the education record doesn't exist or dates are invalid.
         /// </returns>
         public abstract ErrorOr<Success> UpdateEducation(string institution, string fieldOfStudy, EducationDegree degree,
-            DateTime startDate, DateTime endDate, bool isGraduated);
+            DateTime startDate, DateTime? endDate, bool isGraduated);
 
         /// <summary>
         /// Calculates the duration of a specific education record.
@@ -525,7 +561,17 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the education record doesn't exist or certificate is invalid.
         /// </returns>
-        public abstract ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description);
+        public abstract ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description, int fileId);
+
+        /// <summary>
+        /// Updates a certificate for an education record.
+        /// </summary>
+        /// <param name="filePath">New path to the certificate file.</param>
+        /// <returns>
+        /// <see cref="Success"/> if the operation was successful,
+        /// or an error if the education record doesn't exist or certificate is invalid.
+        /// </returns>
+        public abstract ErrorOr<Success> UpdateEducationCertificateByInstitutionAndFieldOfStudy(string institution, string fieldOfStudy, string filePath, int fileId, out string previousPath);
 
         #endregion
 

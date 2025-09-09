@@ -36,7 +36,7 @@ namespace Khadamat_SellerPortal.Application.SocialMediaLinks.Commands.DeleteSoci
             {
                 return deleteSocialMediaLinkResult.FirstError;
             }
-
+            await _unitOfWork.CommitChangesAsync();
             return seller;
         }
     }

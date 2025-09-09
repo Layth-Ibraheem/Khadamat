@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Khadamat_SellerPortal.Domain.Common.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Khadamat_SellerPortal.Domain.Common
 {
     public abstract class Entity
     {
+        protected readonly List<IDomainEvent> _domainEvents = [];
         public int Id { get; }
         protected Entity(int id = 0)
         {
@@ -27,7 +29,12 @@ namespace Khadamat_SellerPortal.Domain.Common
         {
             return Id.GetHashCode();
         }
-
+        public List<IDomainEvent> PopDomainEvents()
+        {
+            var copy = _domainEvents.ToList();
+            _domainEvents.Clear();
+            return copy;
+        }
         protected Entity() { }
     }
 }

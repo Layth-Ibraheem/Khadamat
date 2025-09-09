@@ -1,10 +1,10 @@
 ﻿
 using Mapster;
-using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkType;
+using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity.SocialMediaLinkType;
 using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.SocialMediaLinks.SocialMediaLinkType;
 using Khadamat_SellerPortal.Application.OnlineSellers.Common;
 using Khadamat_SellerPortal.Contracts.SocialMediaLinks;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
 namespace Khadamat_SellerPortal.API.Mappings
 {
     public class SocialMediaLinkMappings : IRegister

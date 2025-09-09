@@ -16,7 +16,7 @@ namespace Khadamat_SellerPortal.Application.Sellers.Commands.UpdateOnlineSellerP
         string SecondName,
         string LastName,
         string Email,
-        string? NationalNo,
+        string NationalNo,
         DateTime DateOfBirth,
         string Country,
         string City,

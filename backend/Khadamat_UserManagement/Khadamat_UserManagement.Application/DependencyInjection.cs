@@ -3,7 +3,7 @@ using Khadamat_UserManagement.Application.Common.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-
+using FluentValidation;
 
 namespace Khadamat_UserManagement.Application
 {
@@ -22,6 +22,7 @@ namespace Khadamat_UserManagement.Application
             var sendingEmailSettings = new SendingEmailSettings();
             configuration.Bind(SendingEmailSettings.Section, sendingEmailSettings);
             services.AddSingleton(Options.Create(sendingEmailSettings));
+            services.AddValidatorsFromAssemblyContaining(typeof(DependencyInjection));
             return services;
         }
     }

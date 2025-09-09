@@ -2,9 +2,9 @@
 using Mapster;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlType;
-using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkType;
-using DomainEducationDegree = Khadamat_SellerPortal.Domain.Common.Entities.EducationDegree;
+using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity.PortfolioUrlType;
+using DomainSocialMediaLinkType = Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity.SocialMediaLinkType;
+using DomainEducationDegree = Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.EducationDegree;
 using APIPortfolioType = Khadamat_SellerPortal.Contracts.PortfolioURLs.PortfolioUrlType;
 using APISocialMediaLinkType = Khadamat_SellerPortal.Contracts.SocialMediaLinks.SocialMediaLinkType;
 using APIEducationDegree = Khadamat_SellerPortal.Contracts.Educations.EducationDegree;
@@ -78,6 +78,7 @@ namespace Khadamat_SellerPortal.API.Controllers
             }, Problem);
 
         }
+
 
         [HttpPut("{id:int}/updatePersonalInfo")]
         public async Task<IActionResult> UpdatePersonalInfo(int id, [FromBody] UpdateSellerPersonalInfoRequest request)

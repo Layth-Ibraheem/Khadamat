@@ -22,7 +22,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Certificate", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.CertificateEntity.Certificate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("Certificates", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Education", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.Education", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,7 +91,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("Educations", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrl", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity.PortfolioUrl", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("PortfolioUrls", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLink", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity.SocialMediaLink", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,7 +143,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("SocialMediaLinks", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperience", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity.WorkExperience", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,6 +191,28 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.UseTptMappingStrategy();
                 });
 
+            modelBuilder.Entity("Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxIntegrationEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("EventContent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OutboxIntegrationEvents");
+                });
+
             modelBuilder.Entity("Khadamat_SellerPortal.Domain.OfflineSellerAggregate.OfflineSeller", b =>
                 {
                     b.HasBaseType("Khadamat_SellerPortal.Domain.SellerAggregate.Seller");
@@ -205,20 +227,20 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.ToTable("OnlineSellers", (string)null);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Certificate", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.CertificateEntity.Certificate", b =>
                 {
-                    b.HasOne("Khadamat_SellerPortal.Domain.Common.Entities.Education", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.Education", null)
                         .WithOne("EducationCertificate")
-                        .HasForeignKey("Khadamat_SellerPortal.Domain.Common.Entities.Certificate", "EducationId")
+                        .HasForeignKey("Khadamat_SellerPortal.Domain.Common.Entities.CertificateEntity.Certificate", "EducationId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperience", null)
+                    b.HasOne("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity.WorkExperience", null)
                         .WithMany("Certificates")
                         .HasForeignKey("WorkExperienceId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Education", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.Education", b =>
                 {
                     b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("Educations")
@@ -250,7 +272,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                     b.Navigation("AttendancePeriod");
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrl", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity.PortfolioUrl", b =>
                 {
                     b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("PortfolioUrls")
@@ -259,7 +281,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLink", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity.SocialMediaLink", b =>
                 {
                     b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("SocialMediaLinks")
@@ -268,7 +290,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperience", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity.WorkExperience", b =>
                 {
                     b.HasOne("Khadamat_SellerPortal.Domain.SellerAggregate.Seller", null)
                         .WithMany("WorkExperiences")
@@ -410,12 +432,12 @@ namespace Khadamat_SellerPortal.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.Education", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity.Education", b =>
                 {
                     b.Navigation("EducationCertificate");
                 });
 
-            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperience", b =>
+            modelBuilder.Entity("Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity.WorkExperience", b =>
                 {
                     b.Navigation("Certificates");
                 });

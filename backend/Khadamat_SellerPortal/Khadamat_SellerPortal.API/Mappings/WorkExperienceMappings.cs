@@ -1,6 +1,8 @@
 ﻿using Khadamat_SellerPortal.Application.OnlineSellers.Common;
+using Khadamat_SellerPortal.Application.WorkExperiences.Commands.AddWorkExperience;
+using Khadamat_SellerPortal.Application.WorkExperiences.Commands.UpdateWorkExperience;
 using Khadamat_SellerPortal.Contracts.WorkExperiences;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Mapster;
 
 namespace Khadamat_SellerPortal.API.Mappings
@@ -20,7 +22,6 @@ namespace Khadamat_SellerPortal.API.Mappings
             .Map(dest => dest.Field, src => src.Field)
             .Map(dest => dest.Certificates, src => src.Certificates);
 
-            // WorkExperience to WorkExperienceResponse
             config.NewConfig<WorkExperience, WorkExperienceResponse>()
                 .Map(dest => dest.Id, src => src.Id)
                 .Map(dest => dest.CompanyName, src => src.CompanyName)
@@ -30,6 +31,9 @@ namespace Khadamat_SellerPortal.API.Mappings
                 .Map(dest => dest.End, src => src.Range.End)
                 .Map(dest => dest.UntilNow, src => src.Range.UntilNow)
                 .Map(dest => dest.Certificates, src => src.Certificates);
+
+            config.NewConfig<AddWorkExperienceRequest, AddWorkExperienceCommand>();
+            config.NewConfig<UpdateWorkExperienceRequest, UpdateWorkExperienceCommand>();
 
         }
     }

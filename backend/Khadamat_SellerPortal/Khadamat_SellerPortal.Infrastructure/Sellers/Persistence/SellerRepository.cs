@@ -34,6 +34,18 @@ namespace Khadamat_SellerPortal.Infrastructure.Sellers.Persistence
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<Seller?> GetSellerByNationalNo(string nationalNo)
+        {
+            return await _context.Sellers.Where(o => o.PersonalDetails.NationalNo == nationalNo)
+                .Include(o => o.WorkExperiences)
+                    .ThenInclude(w => w.Certificates)
+                .Include(o => o.Educations)
+                    .ThenInclude(e => e.EducationCertificate)
+                .Include(o => o.PortfolioUrls)
+                .Include(o => o.SocialMediaLinks)
+                .FirstOrDefaultAsync();
+        }
+
         public async Task UpdateSeller(Seller seller)
         {
             await Task.CompletedTask;

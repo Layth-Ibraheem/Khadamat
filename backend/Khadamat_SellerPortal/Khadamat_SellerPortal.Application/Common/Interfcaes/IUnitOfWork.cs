@@ -8,6 +8,6 @@ namespace Khadamat_SellerPortal.Application.Common.Interfcaes
 {
     public interface IUnitOfWork
     {
-        Task CommitChangesAsync();
+        Task CommitChangesAsync(CancellationToken cancellationToken = default);
     }
 }

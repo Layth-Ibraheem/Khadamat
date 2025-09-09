@@ -15,6 +15,18 @@ namespace Khadamat_SellerPortal.Infrastructure.Common
         public FileService()
         {
         }
+
+        public async Task<bool> DeleteTempFile(string path)
+        {
+            await Task.CompletedTask;
+            if(File.Exists(path))
+            {
+                File.Delete(path);
+                return true;
+            }
+            return false;
+        }
+
         public async Task<ErrorOr<string>> UploadSellerEducationCertificate(IFormFile file, string nationalNo, string institution, string fieldOfStudy)
         {
             try

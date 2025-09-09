@@ -32,7 +32,7 @@ namespace Khadamat_SellerPortal.Application.PortfolioURLs.Commands.UpdatePortfol
                 return updatePortfolioRes.FirstError;
             }
             await _unitOfWork.CommitChangesAsync();
-            return (OnlineSeller)seller;
+            return seller;
         }
     }
 }

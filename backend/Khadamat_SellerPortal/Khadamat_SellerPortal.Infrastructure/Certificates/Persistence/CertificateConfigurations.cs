@@ -1,4 +1,4 @@
-﻿using Khadamat_SellerPortal.Domain.Common.Entities;
+﻿using Khadamat_SellerPortal.Domain.Common.Entities.CertificateEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -15,7 +15,7 @@ namespace Khadamat_SellerPortal.Infrastructure.Certificates.Persistence
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.FilePath)
+            builder.Property(x => x.CachedFilePath)
                 .HasMaxLength(1000)
                 .IsRequired();
 

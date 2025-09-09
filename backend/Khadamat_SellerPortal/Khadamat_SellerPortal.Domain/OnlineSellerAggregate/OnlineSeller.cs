@@ -1,13 +1,11 @@
 ﻿using ErrorOr;
-using Khadamat_SellerPortal.Domain.Common;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Khadamat_SellerPortal.Domain.Common.ValueObjects;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Khadamat_SellerPortal.Domain.SellerAggregate.Events;
 #nullable disable
 namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
 {
@@ -18,6 +16,8 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
     {
         public OnlineSeller(string firstName, string secondName, string lastName, string email, string nationalNo, DateTime dateOfBirth, string country, string city, string region, int id = 0) : base(firstName, secondName, lastName, email, nationalNo, dateOfBirth, country, city, region, id)
         {
+            //_events.Add(new OnlineSellerCreatedDomainEvent(nationalNo));
+            _domainEvents.Add(new SellerCreatedEvent(() => Id));
         }
 
         #region Personal Info
@@ -137,6 +137,17 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return updateResult.IsError ? updateResult.FirstError : Result.Success;
         }
 
+        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
+        {
+            if (!_socialMediaLinks.Any(l => l.Type == type))
+                return Error.NotFound("OnlineSeller.SocialLinkNotFound",
+                    "No social media link found with this ID");
+
+            var toRemove = _socialMediaLinks.First(l => l.Type == type);
+            _socialMediaLinks.Remove(toRemove);
+            return Result.Success;
+        }
+
         #endregion
 
         #region Work Experiences
@@ -144,9 +155,10 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
         public override ErrorOr<Success> AddWorkExperience(string companyName, DateTime start, DateTime? end, string position, string field, bool untilNow = false)
         {
 
-            if (_workExperiences.Any(w => w.CompanyName == companyName))
+            if (_workExperiences.Any(w => w.CompanyName == companyName && w.Position == position))
             {
-                return Error.Conflict("OnlineSeller.ExperienceExistForComapany", "This experience already exists for the provided company");
+                return Error.Conflict("OnlineSeller.ExperienceExistForCompanyPosition",
+                    "This experience already exists for the provided company and position");
             }
             var createWorkExperienceRes = WorkExperience.Create(companyName, start, end, position, field, Id, untilNow);
             if (createWorkExperienceRes.IsError)
@@ -169,7 +181,7 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return Result.Success;
         }
 
-        public override ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime endDate, bool untilNow)
+        public override ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow)
         {
             var existingExperience = _workExperiences.Find(w => w.CompanyName == companyName);
             if (existingExperience == null)
@@ -181,6 +193,18 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return updateResult.IsError ? updateResult.FirstError : Result.Success;
         }
 
+        public override ErrorOr<Success> UpdateWorkExperience(int workExperienceId, string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow)
+        {
+            var existingExperience = _workExperiences.Find(w => w.Id == workExperienceId);
+            if (existingExperience == null)
+            {
+                return Error.NotFound("OnlineSeller.NoExperienceInCompany",
+                    $"No work experience with such id exists to update");
+            }
+            var updateResult = existingExperience.UpdateWorkExperience(position, field, startDate, endDate, untilNow);
+            return updateResult.IsError ? updateResult.FirstError : Result.Success;
+        }
+
         public override ErrorOr<Success> AddWorkExperienceCertification(int workExperienceId, string filePath, string description)
         {
             var workEperience = _workExperiences.Find(w => w.Id == workExperienceId);
@@ -188,7 +212,19 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             {
                 return Error.NotFound("OnlineSeller.NoWorkExperience", "There is no work experience with the provided id");
             }
-            return workEperience.AddCertificate(filePath, description);
+            var result = workEperience.AddCertificate(filePath, description, out var certificateIdProvider);
+            if (result.IsError)
+            {
+                return result.FirstError;
+            }
+            _domainEvents.Add(new WorkExperienceFileUploadedEvent(
+                () => workEperience.Id,
+                certificateIdProvider,
+                Id,
+                workEperience.CompanyName,
+                workEperience.Position,
+                filePath));
+            return Result.Success;
         }
 
         public override ErrorOr<Success> AddWorkExperienceCertification(string companyName, string filePath, string description)
@@ -198,7 +234,20 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             {
                 return Error.NotFound("OnlineSeller.NoWorkExperience", "There is no work experience for the provided company");
             }
-            return workEperience.AddCertificate(filePath, description);
+            var result = workEperience.AddCertificate(filePath, description, out var certificateIdProvider);
+            if (result.IsError)
+            {
+                return result.FirstError;
+            }
+            var x = () => certificateIdProvider();
+            _domainEvents.Add(new WorkExperienceFileUploadedEvent(
+                () => workEperience.Id,
+                certificateIdProvider,
+                Id,
+                workEperience.CompanyName,
+                workEperience.Position,
+                filePath));
+            return Result.Success;
         }
 
         public override ErrorOr<Success> DeleteCertificateFromWorkExperience(int workExperienceId, int certificateId)
@@ -211,14 +260,19 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return workEperience.DeleteCertification(certificateId);
         }
 
-        public override ErrorOr<Success> UpdateCertificate(int workExperienceId, int certificateId, string filePath, string description)
+        public override ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description, int fileId)
         {
             var workEperience = _workExperiences.Find(w => w.Id == workExperienceId);
             if (workEperience == null)
             {
                 return Error.NotFound("OnlineSeller.NoWorkExperience", "There is no work experience with the provided id");
             }
-            return workEperience.UpdateCertificate(certificateId, filePath, description);
+            return workEperience.UpdateCertificate(certificateId, filePath, description, fileId);
+        }
+
+        public override ErrorOr<Success> UpdateWorkExperienceCertificateByCompanyNameAndPosition(string companyName, string position, int certificateId, string filePath, string description)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -254,7 +308,7 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
         }
 
         public override ErrorOr<Success> UpdateEducation(string institution, string fieldOfStudy, EducationDegree degree,
-            DateTime startDate, DateTime endDate, bool isGraduated)
+            DateTime startDate, DateTime? endDate, bool isGraduated)
         {
             var existingEducation = _educations.Find(e => e.Institution == institution && e.FieldOfStudy == fieldOfStudy);
             if (existingEducation == null)
@@ -275,7 +329,11 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return education.AddCertificate(filePath, description);
         }
 
-        public override ErrorOr<Success> AddEducationCertificate(string institution, string fieldOfStudy, string filePath, string description)
+        public override ErrorOr<Success> AddEducationCertificate(
+            string institution,
+            string fieldOfStudy,
+            string filePath,
+            string description)
         {
 
             var education = _educations.Find(e => e.Institution == institution && e.FieldOfStudy == fieldOfStudy);
@@ -283,7 +341,13 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             {
                 return Error.NotFound("OnlineSeller.NoEducationRecord", "No education record found for the provided institution and field of study");
             }
-            return education.AddCertificate(filePath, description);
+            var addEducationResult = education.AddCertificate(filePath, description);
+            if (addEducationResult.IsError)
+            {
+                return addEducationResult.FirstError;
+            }
+            _domainEvents.Add(new EducationFileUploadedEvent(() => education.Id, Id, education.Institution, education.FieldOfStudy, filePath));
+            return Result.Success;
         }
 
         public override ErrorOr<Success> DeleteEducationCertificate(int educationId)
@@ -296,31 +360,41 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return education.DeleteCertificate();
         }
 
-        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description)
+        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description, int fileId)
         {
             var education = _educations.Find(e => e.Id == educationId);
             if (education == null)
             {
                 return Error.NotFound("OnlineSeller.NoEducationRecord", "No education record found with this ID");
             }
-            return education.UpdateCertificate(filePath, description);
+            return education.UpdateCertificate(filePath, description, fileId);
         }
 
-        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
+        public override ErrorOr<Success> UpdateEducationCertificateByInstitutionAndFieldOfStudy(
+            string institution,
+            string fieldOfStudy,
+            string filePath,
+            int fileId,
+            out string previousPath)
         {
-            if (!_socialMediaLinks.Any(l => l.Type == type))
-                return Error.NotFound("OnlineSeller.SocialLinkNotFound",
-                    "No social media link found with this ID");
-
-            var toRemove = _socialMediaLinks.First(l => l.Type == type);
-            _socialMediaLinks.Remove(toRemove);
-            return Result.Success;
+            var education = _educations.Find(e => e.Institution == institution && e.FieldOfStudy == fieldOfStudy);
+            if (education == null)
+            {
+                previousPath = "";
+                return Error.NotFound("OnlineSeller.NoEducationRecord", "No education record found with this ID");
+            }
+            previousPath = education.EducationCertificate.CachedFilePath;
+            return education.UpdateCertificate(filePath, education.EducationCertificate.Description, fileId);
         }
+
+
+
+
         #endregion
 
         private OnlineSeller()
         {
-            
+
         }
 
     }

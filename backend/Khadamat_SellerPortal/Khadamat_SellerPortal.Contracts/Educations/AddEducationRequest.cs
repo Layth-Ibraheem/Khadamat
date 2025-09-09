@@ -13,6 +13,6 @@ namespace Khadamat_SellerPortal.Contracts.Educations
         EducationDegree Degree,
         bool IsGraduated,
         DateTime Start,
-        DateTime End,
+        DateTime? End,
         AddCertificateRequest Certificate);
 }

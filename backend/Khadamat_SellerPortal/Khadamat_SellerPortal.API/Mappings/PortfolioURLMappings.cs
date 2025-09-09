@@ -1,9 +1,9 @@
 ﻿using Mapster;
-using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlType;
+using DomainPortfolioType = Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity.PortfolioUrlType;
 using APIPortfolioType = Khadamat_SellerPortal.Contracts.PortfolioURLs.PortfolioUrlType;
 using Khadamat_SellerPortal.Application.OnlineSellers.Common;
 using Khadamat_SellerPortal.Contracts.PortfolioURLs;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
 
 namespace Khadamat_SellerPortal.API.Mappings
 {

@@ -1,4 +1,4 @@
-﻿using Khadamat_SellerPortal.Domain.Common.Entities;
+﻿using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

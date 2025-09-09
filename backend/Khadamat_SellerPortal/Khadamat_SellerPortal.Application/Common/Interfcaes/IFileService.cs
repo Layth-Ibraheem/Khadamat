@@ -12,5 +12,6 @@ namespace Khadamat_SellerPortal.Application.Common.Interfcaes
     {
         Task<ErrorOr<string>> UploadSellerWorkExperienceCertificate(IFormFile file, string nationalNo, string companyName);
         Task<ErrorOr<string>> UploadSellerEducationCertificate(IFormFile file, string nationalNo, string institution, string fieldOfStudy);
+        Task<bool> DeleteTempFile(string path);
     }
 }

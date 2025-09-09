@@ -1,5 +1,5 @@
 ﻿using ErrorOr;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
 using MediatR;
 using System;

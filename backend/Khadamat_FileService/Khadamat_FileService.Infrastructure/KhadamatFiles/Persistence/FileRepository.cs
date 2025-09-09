@@ -22,13 +22,12 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles.Persistence
         public async Task AddFile(KhadamatFile file)
         {
             await _context.KhadamatFiles.AddAsync(file);
-            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteFile(KhadamatFile file)
         {
+            await Task.CompletedTask;
             _context.KhadamatFiles.Remove(file);
-            await _context.SaveChangesAsync();
         }
 
         public async Task<KhadamatFile?> GetFileByPath(string path)
@@ -38,8 +37,8 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles.Persistence
 
         public async Task UpdateFile(KhadamatFile file)
         {
+            await Task.CompletedTask;
             _context.Update(file);
-            await _context.SaveChangesAsync();
         }
     }
 }

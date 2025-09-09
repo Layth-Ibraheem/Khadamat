@@ -1,4 +1,5 @@
-﻿using Khadamat_SellerPortal.Domain.Common.Entities;
+﻿using Khadamat_SellerPortal.Domain.Common.Entities.CertificateEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

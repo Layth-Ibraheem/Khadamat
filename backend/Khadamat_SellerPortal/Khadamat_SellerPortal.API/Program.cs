@@ -22,6 +22,7 @@ namespace Khadamat_SellerPortal.API
                 .AddApplicationServices()
                 .AddMappings();
                 
+            builder.Services.AddHttpContextAccessor();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -30,6 +31,8 @@ namespace Khadamat_SellerPortal.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseInfrastructureMiddleware();
 
             app.UseHttpsRedirection();
 

@@ -26,18 +26,20 @@ namespace Khadamat_FileService.Application.KhadamatFiles.Commands.UploadFile
 
         public async Task<ErrorOr<string>> Handle(UploadFileCommand request, CancellationToken cancellationToken)
         {
-            var khadamatFile = new KhadamatFile(request.File.FileName, request.File.ContentType, request.File.Length);
-            var getPathRes = await _storeFilesService.UploadFile(request.File, request.File.FileName, request.NationalNo, request.ReferenceType, request.Metdata);
-            if (getPathRes.IsError)
-            {
-                return getPathRes.FirstError;
-            }
-            var path = getPathRes.Value.fullPath;
-            var storedFileName = getPathRes.Value.storedFileName;
-            khadamatFile.UpdateFileMetadata(path, storedFileName, _entityTagGenerator);
+            //var khadamatFile = new KhadamatFile(request.File.FileName, request.File.ContentType, request.File.Length);
+            //var getPathRes = await _storeFilesService.UploadFile(request.File, request.NationalNo, request.ReferenceType, request.Metdata);
+            //if (getPathRes.IsError)
+            //{
+            //    return getPathRes.FirstError;
+            //}
+            //var path = getPathRes.Value.fullPath;
+            //var storedFileName = getPathRes.Value.storedFileName;
+            //khadamatFile.UpdateFileMetadata(path, storedFileName, _entityTagGenerator);
 
-            await _fileRepository.AddFile(khadamatFile);
-            return path;
+            //await _fileRepository.AddFile(khadamatFile);
+            //return path;
+            await Task.CompletedTask;
+            return Error.Conflict();
         }
     }
 }

@@ -1,6 +1,10 @@
 ﻿using ErrorOr;
-using Khadamat_SellerPortal.Domain.Common.Entities;
+using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
+using Khadamat_SellerPortal.Domain.Common.Interfaces;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -108,12 +112,12 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateCertificate(int workExperienceId, int certificateId, string filePath, string description)
+        public override ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description)
         {
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateEducation(string institution, string fieldOfStudy, EducationDegree degree, DateTime startDate, DateTime endDate, bool isGraduated)
+        public override ErrorOr<Success> UpdateEducation(string institution, string fieldOfStudy, EducationDegree degree, DateTime startDate, DateTime? endDate, bool isGraduated)
         {
             throw new NotImplementedException();
         }
@@ -133,7 +137,17 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime endDate, bool untilNow)
+        public override ErrorOr<Success> UpdateWorkExperience(string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ErrorOr<Success> UpdateWorkExperience(int workExperienceId, string companyName, string position, string field, DateTime startDate, DateTime? endDate, bool untilNow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ErrorOr<Success> UpdateEducationCertificateByInstitutionAndFieldOfStudy(string institution, string fieldOfStudy, string filePath, int fileId, out string previousPath)
         {
             throw new NotImplementedException();
         }

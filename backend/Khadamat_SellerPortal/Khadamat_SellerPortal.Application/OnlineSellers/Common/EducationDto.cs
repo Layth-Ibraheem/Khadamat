@@ -1,4 +1,4 @@
-﻿using Khadamat_SellerPortal.Domain.Common.Entities;
+﻿using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

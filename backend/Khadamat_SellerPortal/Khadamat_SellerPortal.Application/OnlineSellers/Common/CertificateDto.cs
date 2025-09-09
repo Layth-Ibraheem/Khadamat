@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_SellerPortal.Application.OnlineSellers.Common
 {
-    public record CertificateDto(string FilePath, string Description);
+    public record CertificateDto(string FilePath, string Description, IFormFile File);
 }

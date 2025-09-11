@@ -34,7 +34,7 @@ namespace Khadamat_FileService.Application.KhadamatFiles.IntegrationEvents
                 var uploadFileResult = await _filesManagerService.UploadEducationFile(
                     fileStreamRes.FileStream,                     // pass the stream directly
                     fileName,     // file name
-                    notification.NationalNo,
+                    notification.SellerId,
                     notification.Institution,
                     notification.FieldOfStudy
                 );
@@ -63,7 +63,7 @@ namespace Khadamat_FileService.Application.KhadamatFiles.IntegrationEvents
                 fileStreamRes.FileStream.Dispose();
 
                 khadamatFile.UpdateFileMetadata(storingResult.FullPath, storingResult.StoredFileName, _entityTagGenerator);
-                var fileContextMetadata = new FileContextMetadata(notification.NationalNo, notification.Institution, notification.FieldOfStudy, null, null, khadamatFile.Path);
+                var fileContextMetadata = new FileContextMetadata(notification.SellerId, notification.EducationId, null, null, khadamatFile.Path);
                 await _fileRepository.AddFile(khadamatFile);
                 await _filesContextMetadataRepo.AddAsync(fileContextMetadata);
                 await _unitOfWork.CommitChangesAsync();

@@ -26,9 +26,8 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
             var fileContextMetadata = await _metadataRepo.GetByPathAsync(notification.FullPath);
             var integrationEvent = new EducationFileSavedIntegrationEvent(
                 notification.FullPath,
-                fileContextMetadata.NationalNo,
-                fileContextMetadata.Institution,
-                fileContextMetadata.FieldOfStudy,
+                fileContextMetadata.SellerId,
+                fileContextMetadata.EducationId.Value,
                 notification.FileId);
 
             await AddOutboxIntegrationEventAsync(integrationEvent);
@@ -39,8 +38,9 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
             var fileContextMetadata = await _metadataRepo.GetByPathAsync(notification.FullPath);
             var integrationEvent = new WorkExperienceFileSavedIntegrationEvent(
                 notification.FullPath,
-                fileContextMetadata.NationalNo,
-                fileContextMetadata.CompanyName,
+                fileContextMetadata.SellerId,
+                fileContextMetadata.WorkExperienceId.Value,
+                fileContextMetadata.CertificateId.Value,
                 notification.FileId);
 
             await AddOutboxIntegrationEventAsync(integrationEvent);

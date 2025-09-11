@@ -26,11 +26,10 @@ namespace Khadamat_SellerPortal.Application.Sellers.IntegrationEvents
         public async Task Handle(EducationFileSavedIntegrationEvent notification, CancellationToken cancellationToken)
         {
             
-            var seller = await _sellerRepository.GetSellerByNationalNo(notification.NationalNo);
+            var seller = await _sellerRepository.GetSellerById(notification.SellerId);
             if(seller != null)
             {
-                var result = seller.UpdateEducationCertificateByInstitutionAndFieldOfStudy(notification.Institution,
-                                                                                           notification.FieldOfStudy,
+                var result = seller.UpdateEducationCertificate(notification.EducationId,
                                                                                            notification.FullPath,
                                                                                            notification.FileId,
                                                                                            out string previousPath);

@@ -24,10 +24,23 @@ namespace Khadamat_SellerPortal.Application.Sellers.IntegrationEvents
 
         public async Task Handle(WorkExperienceFileSavedIntegrationEvent notification, CancellationToken cancellationToken)
         {
-            var seller = await _sellerRepository.GetSellerByNationalNo(notification.NationalNo);
-            if(seller != null)
+            var seller = await _sellerRepository.GetSellerById(notification.SellerId);
+            if (seller != null)
             {
-                var result = seller.UpdateWorkExperienceCertificate()
+                var result = seller.UpdateWorkExperienceCertificate(
+                    notification.WorkExperienceId,
+                    notification.CertificateId,
+                    notification.FullPath,
+                    notification.FileId,
+                    out string previousPath);
+
+                if (result.IsError)
+                {
+                    return;
+                    // Log the error
+                }
+                await _fileService.DeleteTempFile(previousPath);
+                await _unitOfWork.CommitChangesAsync(cancellationToken);
             }
         }
     }

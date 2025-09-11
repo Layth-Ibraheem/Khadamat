@@ -28,13 +28,13 @@ namespace Khadamat_FileService.Application.KhadamatFiles.IntegrationEvents
         public async Task Handle(WorkExperienceFileUploadedIntegrationEvent notification, CancellationToken cancellationToken)
         {
             var fileStreamRes = await _filesManagerService.GetFile(notification.TempPath);
-            if(fileStreamRes != null)
+            if (fileStreamRes != null)
             {
                 string fileName = Path.GetFileName(notification.TempPath);
                 var uploadFileResult = await _filesManagerService.UploadWorkExperienceFile(
                     fileStreamRes.FileStream,
                     fileName,
-                    notification.NationalNo,
+                    notification.SellerId,
                     notification.CompanyName,
                     notification.Position);
 
@@ -62,7 +62,7 @@ namespace Khadamat_FileService.Application.KhadamatFiles.IntegrationEvents
                 fileStreamRes.FileStream.Dispose();
 
                 khadamatFile.UpdateFileMetadata(storingResult.FullPath, storingResult.StoredFileName, _entityTagGenerator);
-                var fileContextMetadata = new FileContextMetadata(notification.NationalNo, null, null, notification.CompanyName, notification.Position, khadamatFile.Path);
+                var fileContextMetadata = new FileContextMetadata(notification.SellerId, null, notification.WorkExperienceId, notification.CertificateId, khadamatFile.Path);
                 await _fileRepository.AddFile(khadamatFile);
                 await _filesContextMetadataRepo.AddAsync(fileContextMetadata);
                 await _unitOfWork.CommitChangesAsync();

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Khadamat_FileService.Application.Common.FileContext
 {
-    public record FileContextMetadata(string NationalNo, string? Institution, string? FieldOfStudy, string? CompanyName, string? Position, string FilePath);
+    public record FileContextMetadata(int SellerId, int? EducationId, int? WorkExperienceId, int? CertificateId, string FilePath);
 }

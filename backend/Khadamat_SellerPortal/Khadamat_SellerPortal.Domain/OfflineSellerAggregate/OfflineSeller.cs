@@ -97,12 +97,12 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> DeleteSocialMediaLink(int id)
+        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
         {
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> DeleteSocialMediaLink(SocialMediaLinkType type)
+        public override ErrorOr<Success> DeleteSocialMediaLink(int id)
         {
             throw new NotImplementedException();
         }
@@ -112,17 +112,17 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description)
-        {
-            throw new NotImplementedException();
-        }
-
         public override ErrorOr<Success> UpdateEducation(string institution, string fieldOfStudy, EducationDegree degree, DateTime startDate, DateTime? endDate, bool isGraduated)
         {
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description)
+        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, int fileId, out string previousPath, string description = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ErrorOr<Success> UpdateEducationCertificateByInstitutionAndFieldOfStudy(string institution, string fieldOfStudy, string filePath, int fileId, out string previousPath)
         {
             throw new NotImplementedException();
         }
@@ -147,7 +147,12 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> UpdateEducationCertificateByInstitutionAndFieldOfStudy(string institution, string fieldOfStudy, string filePath, int fileId, out string previousPath)
+        public override ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, int fileId, out string previousPath, string description = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public override ErrorOr<Success> UpdateWorkExperienceCertificateByCompanyNameAndPosition(string companyName, string position, int certificateId, string filePath, string description)
         {
             throw new NotImplementedException();
         }

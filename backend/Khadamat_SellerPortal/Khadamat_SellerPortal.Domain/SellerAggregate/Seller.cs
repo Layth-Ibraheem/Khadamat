@@ -373,7 +373,7 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the work experience or certificate doesn't exist.
         /// </returns>
-        public abstract ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description, int fileId);
+        public abstract ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, int fileId, out string previousPath, string description = "");
 
         /// <summary>
         /// Updates a certification for a work experience.
@@ -561,7 +561,7 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the education record doesn't exist or certificate is invalid.
         /// </returns>
-        public abstract ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description, int fileId);
+        public abstract ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, int fileId, out string previousPath, string description = "");
 
         /// <summary>
         /// Updates a certificate for an education record.

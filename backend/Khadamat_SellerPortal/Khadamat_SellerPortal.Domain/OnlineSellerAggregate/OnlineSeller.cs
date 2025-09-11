@@ -260,13 +260,31 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return workEperience.DeleteCertification(certificateId);
         }
 
-        public override ErrorOr<Success> UpdateWorkExperienceCertificate(int workExperienceId, int certificateId, string filePath, string description, int fileId)
+        public override ErrorOr<Success> UpdateWorkExperienceCertificate(
+            int workExperienceId,
+            int certificateId,
+            string filePath,
+            int fileId,
+            out string previousPath,
+            string description = "")
         {
             var workEperience = _workExperiences.Find(w => w.Id == workExperienceId);
             if (workEperience == null)
             {
+                previousPath = "";
                 return Error.NotFound("OnlineSeller.NoWorkExperience", "There is no work experience with the provided id");
             }
+            var certificate = workEperience.Certificates.FirstOrDefault(x => x.Id == certificateId);
+            if (certificate == null)
+            {
+                previousPath = "";
+                return Error.NotFound("OnlineSeller.NoCertificate", "There is no certificate with the provided id");
+            }
+            if(description == "")
+            {
+                description = certificate.Description;
+            }
+            previousPath = certificate.CachedFilePath;
             return workEperience.UpdateCertificate(certificateId, filePath, description, fileId);
         }
 
@@ -360,13 +378,19 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return education.DeleteCertificate();
         }
 
-        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, string description, int fileId)
+        public override ErrorOr<Success> UpdateEducationCertificate(int educationId, string filePath, int fileId, out string previousPath, string description = "")
         {
             var education = _educations.Find(e => e.Id == educationId);
             if (education == null)
             {
+                previousPath = "";
                 return Error.NotFound("OnlineSeller.NoEducationRecord", "No education record found with this ID");
             }
+            if (description == "")
+            {
+                description = education.EducationCertificate.Description;// do not update the description because this method is being called from the integration event handler
+            }
+            previousPath = education.EducationCertificate.CachedFilePath;
             return education.UpdateCertificate(filePath, description, fileId);
         }
 

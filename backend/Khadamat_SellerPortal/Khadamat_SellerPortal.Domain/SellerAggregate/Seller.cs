@@ -2,6 +2,7 @@
 using Khadamat_SellerPortal.Domain.Common;
 using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.ProfileImageEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Khadamat_SellerPortal.Domain.Common.ValueObjects;
@@ -30,6 +31,8 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         protected readonly List<SocialMediaLink> _socialMediaLinks = new();
         protected readonly List<WorkExperience> _workExperiences = new();
         protected readonly List<Education> _educations = new();
+
+        public ProfileImage ProfileImage { get; protected set; }
 
         /// <summary>
         /// Gets the read-only collection of the seller's portfolio URLs.
@@ -105,6 +108,12 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         {
             PersonalDetails = new SellerPersonalDetails(firstName, secondName, lastName, email, nationalNo, dateOfBirth, country, city, region);
         }
+        #endregion
+
+        #region ProfileImages
+        public abstract ErrorOr<Success> AddProfileImage(int imageFileId, string cachedImageFilePath);
+        public abstract ErrorOr<Success> UpdateProfileImage(int imageFileId, string cachedImageFilePath, out string previousPath);
+
         #endregion
 
         #region Portfolio URLs
@@ -348,7 +357,7 @@ namespace Khadamat_SellerPortal.Domain.SellerAggregate
         /// <see cref="Success"/> if the operation was successful,
         /// or an error if the work experience doesn't exist or certification is invalid.
         /// </returns>
-        public abstract ErrorOr<Success> AddWorkExperienceCertification(string companyName, string filePath, string description);
+        public abstract ErrorOr<Success> AddWorkExperienceCertification(string companyName, string position, string filePath, string description);
 
 
         /// <summary>

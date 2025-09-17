@@ -40,6 +40,7 @@ namespace Khadamat_SellerPortal.Application.Sellers.IntegrationEvents
                     // Log the error
                 }
                 await _fileService.DeleteTempFile(previousPath);
+                await _sellerRepository.UpdateSeller(seller);
                 await _unitOfWork.CommitChangesAsync(cancellationToken);
             }
         }

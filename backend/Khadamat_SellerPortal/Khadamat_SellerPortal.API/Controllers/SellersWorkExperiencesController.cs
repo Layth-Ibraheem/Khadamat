@@ -1,4 +1,5 @@
-﻿using Khadamat_SellerPortal.Application.WorkExperiences.Commands.AddWorkExperience;
+﻿using Khadamat_SellerPortal.Application.OnlineSellers.Common;
+using Khadamat_SellerPortal.Application.WorkExperiences.Commands.AddWorkExperience;
 using Khadamat_SellerPortal.Application.WorkExperiences.Commands.UpdateWorkExperience;
 using Khadamat_SellerPortal.Contracts.Sellers;
 using Khadamat_SellerPortal.Contracts.WorkExperiences;
@@ -20,11 +21,17 @@ namespace Khadamat_SellerPortal.API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> AddWorkExperience(int sellerId, [FromBody] AddWorkExperienceRequest request)
+        public async Task<IActionResult> AddWorkExperience(int sellerId, [FromForm] AddWorkExperienceRequest request)
         {
+            var certs = new List<CertificateDto>();
+            foreach (var cert in request.Certificates)
+            {
+                certs.Add(new CertificateDto(cert.FilePath, cert.Description, cert.File));
+            }
+            var d = new AddWorkExperienceCommand(sellerId, request.CompanyName, request.Start, request.End, request.UntilNow, request.Position, request.Field, certs);
             var command = request.Adapt<AddWorkExperienceCommand>();
             command = command with { SellerId = sellerId };
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(d);
             return result.Match(seller =>
             {
                 var sellerResponse = seller.Adapt<SellerResponse>();

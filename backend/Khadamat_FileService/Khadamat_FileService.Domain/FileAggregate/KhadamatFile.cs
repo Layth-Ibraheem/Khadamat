@@ -42,7 +42,10 @@ namespace Khadamat_FileService.Domain.FileAggregate
             {
                 _domainEvents.Add(new WorkExperienceFileSavedDomainEvent(Path, () => Id));
             }
-
+            if(KhadamatFileType == KhadamatFileReferenceType.SellerProfileImage)
+            {
+                _domainEvents.Add(new ProfileImageFileSavedDomainEvent(Path, () => Id));
+            }
 
 
 

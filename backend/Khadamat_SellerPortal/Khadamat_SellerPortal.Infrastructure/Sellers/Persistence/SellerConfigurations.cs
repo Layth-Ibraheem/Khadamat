@@ -1,4 +1,5 @@
-﻿using Khadamat_SellerPortal.Domain.OfflineSellerAggregate;
+﻿using Khadamat_SellerPortal.Domain.Common.Entities.ProfileImageEntity;
+using Khadamat_SellerPortal.Domain.OfflineSellerAggregate;
 using Khadamat_SellerPortal.Domain.OnlineSellerAggregate;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,12 @@ namespace Khadamat_SellerPortal.Infrastructure.Sellers.Persistence
                 .WithOne()
                 .HasForeignKey(x => x.SellerId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(x => x.ProfileImage)
+                .WithOne()
+                .HasForeignKey<ProfileImage>(p => p.SellerId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
             builder.HasMany(x => x.SocialMediaLinks)
                 .WithOne()

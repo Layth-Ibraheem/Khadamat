@@ -11,10 +11,11 @@ using System.Text.Json;
 using Khadamat_SharedKernal.Khadamat_SellerPortal;
 namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
 {
-    public class OuboxWriterEventHandler : 
+    public class OuboxWriterEventHandler :
         INotificationHandler<SellerCreatedEvent>,
         INotificationHandler<EducationFileUploadedEvent>,
-        INotificationHandler<WorkExperienceFileUploadedEvent>
+        INotificationHandler<WorkExperienceFileUploadedEvent>,
+        INotificationHandler<ProfileImageCreatedDomainEvent>
     {
         private readonly Khadamat_SellerPortalDbContext _context;
 
@@ -52,6 +53,12 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
 
             await AddOutboxIntegrationEventAsync(integrationEvent);
         }
+        public async Task Handle(ProfileImageCreatedDomainEvent notification, CancellationToken cancellationToken)
+        {
+            var integrationEvent = new ProfileImageCreatedIntegrationEvent(notification.SellerId, notification.TempPath);
+            await AddOutboxIntegrationEventAsync(integrationEvent);
+        }
+
         public async Task AddOutboxIntegrationEventAsync(IIntegrationEvent integrationEvent)
         {
             await _context.OutboxIntegrationEvents.AddAsync(new OutboxIntegrationEvent(
@@ -61,6 +68,5 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
             await _context.SaveChangesAsync();
         }
 
-        
     }
 }

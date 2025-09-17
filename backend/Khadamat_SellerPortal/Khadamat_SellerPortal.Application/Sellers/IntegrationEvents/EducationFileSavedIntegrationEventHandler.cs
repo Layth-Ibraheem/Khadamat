@@ -39,6 +39,7 @@ namespace Khadamat_SellerPortal.Application.Sellers.IntegrationEvents
                     // log the error
                 }
                 await _fileService.DeleteTempFile(previousPath);
+                await _sellerRepository.UpdateSeller(seller);
                 await _unitOfWork.CommitChangesAsync();
             }
             // log that the seller is null, maybe it is deleted

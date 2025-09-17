@@ -15,5 +15,7 @@ namespace Khadamat_SharedKernal.Common
     [JsonDerivedType(typeof(EducationFileUploadedIntegrationEvent), typeDiscriminator: nameof(EducationFileUploadedIntegrationEvent))]
     [JsonDerivedType(typeof(WorkExperienceFileSavedIntegrationEvent), typeDiscriminator: nameof(WorkExperienceFileSavedIntegrationEvent))]
     [JsonDerivedType(typeof(WorkExperienceFileUploadedIntegrationEvent), typeDiscriminator: nameof(WorkExperienceFileUploadedIntegrationEvent))]
+    [JsonDerivedType(typeof(ProfileImageCreatedIntegrationEvent), typeDiscriminator: nameof(ProfileImageCreatedIntegrationEvent))]
+    [JsonDerivedType(typeof(ProfileImageFileSavedIntegrationEvent), typeDiscriminator: nameof(ProfileImageFileSavedIntegrationEvent))]
     public interface IIntegrationEvent : INotification { }
 }

@@ -18,5 +18,6 @@ namespace Khadamat_FileService.Application.Common.Interfaces
         Task CreateSellerFolderStructureAsync(string nationalNo);
         Task<ErrorOr<UploadFileResult>> UploadEducationFile(Stream fileStream, string fileName, int sellerId, string institution, string fieldOfStudy);
         Task<ErrorOr<UploadFileResult>> UploadWorkExperienceFile(Stream fileStream, string fileName, int sellerId, string companyName, string position);
+        Task<ErrorOr<UploadFileResult>> UploadProfileImageFile(Stream fileStream, string fileName, int sellerId);
     }
 }

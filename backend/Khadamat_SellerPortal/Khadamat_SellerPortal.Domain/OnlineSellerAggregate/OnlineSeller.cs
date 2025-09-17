@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using Khadamat_SellerPortal.Domain.Common.Entities.EducationEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.PortfolioUrlEntity;
+using Khadamat_SellerPortal.Domain.Common.Entities.ProfileImageEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.SocialMediaLinkEntity;
 using Khadamat_SellerPortal.Domain.Common.Entities.WorkExperienceEntity;
 using Khadamat_SellerPortal.Domain.Common.ValueObjects;
@@ -19,6 +20,32 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             //_events.Add(new OnlineSellerCreatedDomainEvent(nationalNo));
             _domainEvents.Add(new SellerCreatedEvent(() => Id));
         }
+
+        #region Profile Images
+        public override ErrorOr<Success> AddProfileImage(int imageFileId, string cachedImageFilePath)
+        {
+            var createProfileImageResult = ProfileImage.Create(imageFileId, cachedImageFilePath, Id);
+            if (createProfileImageResult.IsError)
+            {
+                return createProfileImageResult.FirstError;
+            }
+            ProfileImage = createProfileImageResult.Value;
+            _domainEvents.Add(new ProfileImageCreatedDomainEvent(Id, cachedImageFilePath));
+            return Result.Success;
+        }
+
+        public override ErrorOr<Success> UpdateProfileImage(int imageFileId, string cachedImageFilePath, out string previousPath)
+        {
+            var updateResult = ProfileImage.Update(imageFileId, cachedImageFilePath);
+            if (updateResult.IsError)
+            {
+                previousPath = null;
+                return updateResult.FirstError;
+            }
+            previousPath = ProfileImage.CachedImageFilePath;
+            return Result.Success;
+        }
+        #endregion
 
         #region Personal Info
         public override void UpdatePersonalInfo(
@@ -227,9 +254,9 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             return Result.Success;
         }
 
-        public override ErrorOr<Success> AddWorkExperienceCertification(string companyName, string filePath, string description)
+        public override ErrorOr<Success> AddWorkExperienceCertification(string companyName, string position, string filePath, string description)
         {
-            var workEperience = _workExperiences.Find(w => w.CompanyName == companyName);
+            var workEperience = _workExperiences.Find(w => w.CompanyName == companyName && w.Position == position);
             if (workEperience == null)
             {
                 return Error.NotFound("OnlineSeller.NoWorkExperience", "There is no work experience for the provided company");
@@ -239,7 +266,6 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             {
                 return result.FirstError;
             }
-            var x = () => certificateIdProvider();
             _domainEvents.Add(new WorkExperienceFileUploadedEvent(
                 () => workEperience.Id,
                 certificateIdProvider,
@@ -280,7 +306,7 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
                 previousPath = "";
                 return Error.NotFound("OnlineSeller.NoCertificate", "There is no certificate with the provided id");
             }
-            if(description == "")
+            if (description == "")
             {
                 description = certificate.Description;
             }
@@ -410,8 +436,6 @@ namespace Khadamat_SellerPortal.Domain.OnlineSellerAggregate
             previousPath = education.EducationCertificate.CachedFilePath;
             return education.UpdateCertificate(filePath, education.EducationCertificate.Description, fileId);
         }
-
-
 
 
         #endregion

@@ -11,7 +11,10 @@ using System.Diagnostics;
 
 namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
 {
-    public class OuboxWriterEventHandler : INotificationHandler<EducationFileSavedDomainEvent>, INotificationHandler<WorkExperienceFileSavedDomainEvent>
+    public class OuboxWriterEventHandler :
+        INotificationHandler<EducationFileSavedDomainEvent>,
+        INotificationHandler<WorkExperienceFileSavedDomainEvent>,
+        INotificationHandler<ProfileImageFileSavedDomainEvent>
     {
         private readonly Khadamat_FileServiceDbContext _context;
         private readonly IFilesContextMetadataRepo _metadataRepo;
@@ -46,6 +49,14 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
             await AddOutboxIntegrationEventAsync(integrationEvent);
         }
 
+        public async Task Handle(ProfileImageFileSavedDomainEvent notification, CancellationToken cancellationToken)
+        {
+            var fileContextMetadata = await _metadataRepo.GetByPathAsync(notification.FullPath);
+            var integrationEvent = new ProfileImageFileSavedIntegrationEvent(notification.FullPath, notification.FileId, fileContextMetadata.SellerId);
+
+            await AddOutboxIntegrationEventAsync(integrationEvent);
+        }
+
         public async Task AddOutboxIntegrationEventAsync(IIntegrationEvent integrationEvent)
         {
             await _context.OutboxIntegrationEvents.AddAsync(new OutboxIntegrationEvent(
@@ -54,6 +65,7 @@ namespace Khadamat_SellerPortal.Infrastructure.IntegrationEvents.OutboxWriter
 
             await _context.SaveChangesAsync();
         }
+
 
     }
 }

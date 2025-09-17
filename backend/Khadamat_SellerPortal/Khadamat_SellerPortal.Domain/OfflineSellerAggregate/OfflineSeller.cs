@@ -72,7 +72,7 @@ namespace Khadamat_SellerPortal.Domain.OfflineSellerAggregate
             throw new NotImplementedException();
         }
 
-        public override ErrorOr<Success> AddWorkExperienceCertification(string companyName, string filePath, string description)
+        public override ErrorOr<Success> AddWorkExperienceCertification(string companyName, string position, string filePath, string description)
         {
             throw new NotImplementedException();
         }

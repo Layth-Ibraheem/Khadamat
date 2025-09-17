@@ -112,7 +112,7 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
             return path;
         }
 
-        
+
         public async Task<ErrorOr<UploadFileResult>> UploadEducationFile(Stream fileStream, string fileName, int sellerId, string institution, string fieldOfStudy)
         {
             var fileExtension = Path.GetExtension(fileName);
@@ -139,13 +139,37 @@ namespace Khadamat_FileService.Infrastructure.KhadamatFiles
                 return Error.Unexpected("File.Unexpected", e.Message);
             }
         }
-        
+
+        public async Task<ErrorOr<UploadFileResult>> UploadProfileImageFile(Stream fileStream, string fileName, int sellerId)
+        {
+            var fileExtension = Path.GetExtension(fileName);
+            var guid = Guid.NewGuid().ToString();
+            var storedFileName = $"{guid}{fileExtension}";
+            var relativePath = $@"{sellerId}\ProfileImage\ProfileImage-{guid}\{storedFileName}";
+            var fullPath = Path.Combine(BaseStorage, relativePath);
+
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath)!);
+                using (var destinationStream = new FileStream(fullPath, FileMode.Create, FileAccess.Write, FileShare.None))
+                {
+                    await fileStream.CopyToAsync(destinationStream);
+                }
+
+                return new UploadFileResult(fullPath, storedFileName);
+            }
+            catch (Exception e)
+            {
+                return Error.Unexpected("File.Unexpected", e.Message);
+            }
+        }
+
         public async Task<ErrorOr<UploadFileResult>> UploadWorkExperienceFile(Stream fileStream, string fileName, int sellerId, string companyName, string position)
         {
             var fileExtension = Path.GetExtension(fileName);
             var guid = Guid.NewGuid().ToString();
             var storedFileName = $"{guid}{fileExtension}";
-            var relativePath = $@"{sellerId}\Educations\{companyName}-{position}\Certificate-{guid}\{storedFileName}";
+            var relativePath = $@"{sellerId}\WorkExperiences\{companyName}-{position}\Certificate-{guid}\{storedFileName}";
             var fullPath = Path.Combine(BaseStorage, relativePath);
 
             try

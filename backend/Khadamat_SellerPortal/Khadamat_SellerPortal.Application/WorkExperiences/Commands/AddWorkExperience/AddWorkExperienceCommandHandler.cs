@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using Khadamat_SellerPortal.Application.Common.Interfcaes;
 using Khadamat_SellerPortal.Application.Sellers.Queries.FetchSeller;
+using Khadamat_SellerPortal.Domain.Common.Interfaces;
 using Khadamat_SellerPortal.Domain.SellerAggregate;
 using MediatR;
 using System;
@@ -15,10 +16,12 @@ namespace Khadamat_SellerPortal.Application.WorkExperiences.Commands.AddWorkExpe
     {
         private readonly ISender _mediator;
         private readonly IUnitOfWork _unitOfWork;
-        public AddWorkExperienceCommandHandler(ISender mediator, IUnitOfWork unitOfWork)
+        private readonly IDomainFilesService _domainFilesService;
+        public AddWorkExperienceCommandHandler(ISender mediator, IUnitOfWork unitOfWork, IDomainFilesService domainFilesService)
         {
             _mediator = mediator;
             _unitOfWork = unitOfWork;
+            _domainFilesService = domainFilesService;
         }
 
         public async Task<ErrorOr<Seller>> Handle(AddWorkExperienceCommand request, CancellationToken cancellationToken)
@@ -36,13 +39,18 @@ namespace Khadamat_SellerPortal.Application.WorkExperiences.Commands.AddWorkExpe
             }
             foreach (var cert in request.Certificates)
             {
-                var addCertificates = seller.AddWorkExperienceCertification(request.CompanyName, cert.FilePath, cert.Description);
+                string tempFilePath = await _domainFilesService.UploadFileToTempPath(cert.File);
+                var addCertificates = seller.AddWorkExperienceCertification(
+                    request.CompanyName,
+                    request.Position,
+                    tempFilePath,
+                    cert.Description);
                 if (addCertificates.IsError)
                 {
                     return addCertificates.FirstError;
                 }
             }
-            await _unitOfWork.CommitChangesAsync();
+            await _unitOfWork.CommitChangesAsync(cancellationToken);
             return seller;
         }
     }

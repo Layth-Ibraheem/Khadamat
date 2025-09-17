@@ -4,6 +4,7 @@ using Khadamat_SellerPortal.Infrastructure.Common.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Khadamat_SellerPortal.Infrastructure.Migrations
 {
     [DbContext(typeof(Khadamat_SellerPortalDbContext))]
-    partial class Khadamat_SellerPortalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250912104623_ChangeFilePathToCachedFilePathInCertificate")]
+    partial class ChangeFilePathToCachedFilePathInCertificate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -52,8 +52,8 @@ namespace Khadamat_SellerPortal.Infrastructure.Common.Persistence
                 return;
             }
 
-            await PublishDomainEvents(domainEvents);
             await base.SaveChangesAsync(cancellationToken);
+            await PublishDomainEvents(domainEvents);
         }
         private bool IsUserWaitingOnline() => _httpContextAccessor.HttpContext is not null;
         private async Task PublishDomainEvents(List<IDomainEvent> domainEvents)
